@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | Smart Community Problem Reporting</title>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Leaflet CSS -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+</head>
+
+<body class="admin-page">
+
+    <!-- =========================
+         ADMIN SIDEBAR
+    ========================== -->
+    <aside class="admin-sidebar" id="adminSidebar">
+
+        <!-- Brand -->
+        <div class="sidebar-brand">
+            <div class="brand-icon">📍</div>
+
+            <div class="brand-text">
+                <strong>Smart Community</strong>
+                <span>Problem Reporting</span>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="sidebar-nav">
+
+            <a
+                href="#dashboardSection"
+                class="sidebar-link active"
+                data-section="dashboardSection"
+            >
+                <span class="sidebar-icon">🏠</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a
+                href="#reportsSection"
+                class="sidebar-link"
+                data-section="reportsSection"
+            >
+                <span class="sidebar-icon">📋</span>
+                <span>All Reports</span>
+            </a>
+
+            <a
+                href="#mapSection"
+                class="sidebar-link"
+                data-section="mapSection"
+            >
+                <span class="sidebar-icon">📍</span>
+                <span>Map View</span>
+            </a>
+
+            <a
+                href="#residentsSection"
+                class="sidebar-link"
+                data-section="residentsSection"
+            >
+                <span class="sidebar-icon">👥</span>
+                <span>Residents</span>
+            </a>
+
+            <a
+                href="#settingsSection"
+                class="sidebar-link"
+                data-section="settingsSection"
+            >
+                <span class="sidebar-icon">⚙️</span>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+        <!-- Sidebar bottom -->
+        <div class="sidebar-bottom">
+
+            <button
+                type="button"
+                class="sidebar-link sidebar-logout"
+                id="logoutBtn"
+            >
+                <span class="sidebar-icon">🚪</span>
+                <span>Logout</span>
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+    <main class="admin-main">
+
+        <!-- =========================
+             TOP BAR
+        ========================== -->
+        <header class="admin-topbar">
+
+            <button
+                type="button"
+                class="sidebar-toggle"
+                id="sidebarToggle"
+                aria-label="Toggle sidebar"
+            >
+                ☰
+            </button>
+
+            <div class="admin-topbar-title">
+                <span>Administrator Panel</span>
+            </div>
+
+            <div class="admin-user">
+                <div class="admin-avatar">
+                    A
+                </div>
+
+                <div class="admin-user-info">
+                    <strong>Administrator</strong>
+                    <span>Admin</span>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             PAGE CONTENT
+        ========================== -->
+        <div class="admin-content">
+
+
+            <!-- =====================================================
+                 DASHBOARD SECTION
+            ====================================================== -->
+            <section
+                id="dashboardSection"
+                class="admin-section active-section"
+            >
+
+                <div class="admin-page-heading">
+
+                    <div>
+                        <h1>Admin Dashboard</h1>
+
+                        <p>
+                            Monitor and manage community problem reports.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- Statistics -->
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <div class="stat-icon total-icon">
+                            📊
+                        </div>
+
+                        <div class="stat-content">
+                            <span>Total Reports</span>
+                            <strong id="totalReports">0</strong>
+                        </div>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-icon submitted-icon">
+                            📨
+                        </div>
+
+                        <div class="stat-content">
+                            <span>Submitted</span>
+                            <strong id="submittedReports">0</strong>
+                        </div>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-icon review-icon">
+                            🔍
+                        </div>
+
+                        <div class="stat-content">
+                            <span>Under Review</span>
+                            <strong id="underReviewReports">0</strong>
+                        </div>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-icon progress-icon">
+                            🔄
+                        </div>
+
+                        <div class="stat-content">
+                            <span>In Progress</span>
+                            <strong id="inProgressReports">0</strong>
+                        </div>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-icon resolved-icon">
+                            ✅
+                        </div>
+
+                        <div class="stat-content">
+                            <span>Resolved</span>
+                            <strong id="resolvedReports">0</strong>
+                        </div>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-icon rejected-icon">
+                            ❌
+                        </div>
+
+                        <div class="stat-content">
+                            <span>Rejected</span>
+                            <strong id="rejectedReports">0</strong>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- Dashboard introduction -->
+                <div class="admin-dashboard-intro">
+
+                    <div>
+                        <h2>Community Reports Overview</h2>
+
+                        <p>
+                            Use the navigation menu to manage reports,
+                            view reported locations, manage residents,
+                            and customize the administrator interface.
+                        </p>
+                    </div>
+
+                    <a
+                        href="#reportsSection"
+                        class="admin-primary-action dashboard-reports-link"
+                    >
+                        View All Reports
+                    </a>
+
+                </div>
+
+
+                <!-- Recent reports will be populated by admin.js -->
+                <div class="admin-dashboard-recent">
+
+                    <div class="section-heading">
+                        <div>
+                            <h2>Recent Reports</h2>
+                            <p>Latest community problems submitted by residents.</p>
+                        </div>
+                    </div>
+
+                    <div id="dashboardRecentReports">
+                        <!-- Optional future dashboard content -->
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+                 ALL REPORTS SECTION
+            ====================================================== -->
+            <section
+                id="reportsSection"
+                class="admin-section"
+            >
+
+                <div class="admin-page-heading">
+
+                    <div>
+                        <h1>All Reports</h1>
+
+                        <p>
+                            Review, update, and manage community reports.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- Search and Filters -->
+                <div class="admin-toolbar">
+
+                    <div class="search-box">
+
+                        <span class="search-icon">🔎</span>
+
+                        <input
+                            type="text"
+                            id="searchReports"
+                            placeholder="Search reports..."
+                        >
+
+                    </div>
+
+
+                    <select id="statusFilter">
+
+                        <option value="">All Statuses</option>
+
+                        <option value="Submitted">
+                            Submitted
+                        </option>
+
+                        <option value="Under Review">
+                            Under Review
+                        </option>
+
+                        <option value="In Progress">
+                            In Progress
+                        </option>
+
+                        <option value="Resolved">
+                            Resolved
+                        </option>
+
+                        <option value="Rejected">
+                            Rejected
+                        </option>
+
+                    </select>
+
+
+                    <button
+                        type="button"
+                        id="clearFilters"
+                        class="admin-secondary-action"
+                    >
+                        Clear Filters
+                    </button>
+
+                </div>
+
+
+                <!-- Reports -->
+                <div class="admin-section-heading">
+
+                    <div>
+                        <h2>Community Reports</h2>
+
+                        <p>
+                            Select a report to view or edit its details.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div id="adminReports">
+
+                    <div class="admin-loading">
+                        Loading reports...
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+                 MAP SECTION
+            ====================================================== -->
+            <section
+                id="mapSection"
+                class="admin-section"
+            >
+
+                <div class="admin-page-heading">
+
+                    <div>
+                        <h1>Map View</h1>
+
+                        <p>
+                            View community reports according to their
+                            reported locations.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="map-info-card">
+
+                    <div class="map-info-icon">
+                        📍
+                    </div>
+
+                    <div>
+                        <h3>Community Problem Locations</h3>
+
+                        <p>
+                            Report markers are displayed on the map below.
+                            Select a marker to view report information.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="adminMap"
+                    class="admin-map"
+                ></div>
+
+            </section>
+
+
+            <!-- =====================================================
+                 RESIDENTS SECTION
+            ====================================================== -->
+            <section
+                id="residentsSection"
+                class="admin-section"
+            >
+
+                <div class="admin-page-heading">
+
+                    <div>
+                        <h1>Residents</h1>
+
+                        <p>
+                            View registered residents and their
+                            community participation.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="feature-placeholder">
+
+                    <div class="feature-placeholder-icon">
+                        👥
+                    </div>
+
+                    <h2>Resident Management</h2>
+
+                    <p>
+                        This section will display registered residents,
+                        contact information, number of submitted reports,
+                        and resident activity.
+                    </p>
+
+                    <div class="feature-status">
+                        Coming in the next step
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+                 SETTINGS SECTION
+            ====================================================== -->
+            <section
+                id="settingsSection"
+                class="admin-section"
+            >
+
+                <div class="admin-page-heading">
+
+                    <div>
+                        <h1>Settings</h1>
+
+                        <p>
+                            Customize the administrator dashboard and
+                            system interface.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="settings-grid">
+
+
+                    <!-- Appearance -->
+                    <div class="settings-card">
+
+                        <div class="settings-card-header">
+
+                            <div class="settings-icon">
+                                🎨
+                            </div>
+
+                            <div>
+                                <h2>Appearance</h2>
+
+                                <p>
+                                    Customize the dashboard design.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="setting-item">
+
+                            <div>
+                                <strong>Theme</strong>
+
+                                <span>
+                                    Choose light or dark mode.
+                                </span>
+                            </div>
+
+                            <select id="themeSetting">
+
+                                <option value="light">
+                                    Light
+                                </option>
+
+                                <option value="dark">
+                                    Dark
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="setting-item">
+
+                            <div>
+                                <strong>Sidebar</strong>
+
+                                <span>
+                                    Control the sidebar layout.
+                                </span>
+                            </div>
+
+                            <select id="sidebarSetting">
+
+                                <option value="expanded">
+                                    Expanded
+                                </option>
+
+                                <option value="collapsed">
+                                    Collapsed
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="setting-item">
+
+                            <div>
+                                <strong>Dashboard Density</strong>
+
+                                <span>
+                                    Control spacing between elements.
+                                </span>
+                            </div>
+
+                            <select id="densitySetting">
+
+                                <option value="comfortable">
+                                    Comfortable
+                                </option>
+
+                                <option value="compact">
+                                    Compact
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Dashboard -->
+                    <div class="settings-card">
+
+                        <div class="settings-card-header">
+
+                            <div class="settings-icon">
+                                📊
+                            </div>
+
+                            <div>
+                                <h2>Dashboard</h2>
+
+                                <p>
+                                    Control dashboard information.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="setting-item">
+
+                            <div>
+                                <strong>Show Statistics</strong>
+
+                                <span>
+                                    Display dashboard statistic cards.
+                                </span>
+                            </div>
+
+                            <label class="switch">
+
+                                <input
+                                    type="checkbox"
+                                    id="showStatsSetting"
+                                    checked
+                                >
+
+                                <span class="slider"></span>
+
+                            </label>
+
+                        </div>
+
+
+                        <div class="setting-item">
+
+                            <div>
+                                <strong>Show Recent Reports</strong>
+
+                                <span>
+                                    Display the recent reports area.
+                                </span>
+                            </div>
+
+                            <label class="switch">
+
+                                <input
+                                    type="checkbox"
+                                    id="showRecentSetting"
+                                    checked
+                                >
+
+                                <span class="slider"></span>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Notifications -->
+                    <div class="settings-card">
+
+                        <div class="settings-card-header">
+
+                            <div class="settings-icon">
+                                🔔
+                            </div>
+
+                            <div>
+                                <h2>Notifications</h2>
+
+                                <p>
+                                    Control administrator notifications.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="setting-item">
+
+                            <div>
+                                <strong>Report Notifications</strong>
+
+                                <span>
+                                    Notify when new reports arrive.
+                                </span>
+                            </div>
+
+                            <label class="switch">
+
+                                <input
+                                    type="checkbox"
+                                    id="reportNotificationSetting"
+                                    checked
+                                >
+
+                                <span class="slider"></span>
+
+                            </label>
+
+                        </div>
+
+
+                        <div class="setting-item">
+
+                            <div>
+                                <strong>Status Updates</strong>
+
+                                <span>
+                                    Notify when reports are updated.
+                                </span>
+                            </div>
+
+                            <label class="switch">
+
+                                <input
+                                    type="checkbox"
+                                    id="statusNotificationSetting"
+                                    checked
+                                >
+
+                                <span class="slider"></span>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- System -->
+                    <div class="settings-card">
+
+                        <div class="settings-card-header">
+
+                            <div class="settings-icon">
+                                ⚙️
+                            </div>
+
+                            <div>
+                                <h2>System Preferences</h2>
+
+                                <p>
+                                    General administrator preferences.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="setting-item">
+
+                            <div>
+                                <strong>Auto Refresh</strong>
+
+                                <span>
+                                    Automatically refresh reports.
+                                </span>
+                            </div>
+
+                            <label class="switch">
+
+                                <input
+                                    type="checkbox"
+                                    id="autoRefreshSetting"
+                                >
+
+                                <span class="slider"></span>
+
+                            </label>
+
+                        </div>
+
+
+                        <div class="setting-item">
+
+                            <div>
+                                <strong>Save Preferences</strong>
+
+                                <span>
+                                    Store your dashboard preferences.
+                                </span>
+                            </div>
+
+                            <button
+                                type="button"
+                                class="admin-primary-action"
+                                id="saveSettingsBtn"
+                            >
+                                Save
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="settingsMessage"
+                    class="settings-message"
+                ></div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         SUPABASE
+    ========================== -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
+
+    <!-- =========================
+         LEAFLET
+    ========================== -->
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    ></script>
+
+    <!-- =========================
+         PROJECT JAVASCRIPT
+    ========================== -->
+    <script src="js/supabase.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/admin-settings.js"></script>
+
+
+    <!-- =========================
+         ADMIN PAGE NAVIGATION
+    ========================== -->
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const sidebarLinks =
+                document.querySelectorAll(".sidebar-link[data-section]");
+
+            const sections =
+                document.querySelectorAll(".admin-section");
+
+
+            function showSection(sectionId) {
+
+                sections.forEach(function (section) {
+
+                    section.classList.remove("active-section");
+
+                });
+
+
+                const selectedSection =
+                    document.getElementById(sectionId);
+
+
+                if (selectedSection) {
+
+                    selectedSection.classList.add("active-section");
+
+                }
+
+
+                sidebarLinks.forEach(function (link) {
+
+                    link.classList.remove("active");
+
+                });
+
+
+                const activeLink =
+                    document.querySelector(
+                        '.sidebar-link[data-section="' +
+                        sectionId +
+                        '"]'
+                    );
+
+
+                if (activeLink) {
+
+                    activeLink.classList.add("active");
+
+                }
+
+
+                window.location.hash = sectionId;
+
+
+                /* Fix Leaflet map display when switching
+                   from a hidden section to Map View */
+                if (sectionId === "mapSection") {
+
+                    setTimeout(function () {
+
+                        if (
+                            typeof adminMap !== "undefined" &&
+                            adminMap &&
+                            typeof adminMap.invalidateSize === "function"
+                        ) {
+
+                            adminMap.invalidateSize();
+
+                        }
+
+                    }, 200);
+
+                }
+
+            }
+
+
+            sidebarLinks.forEach(function (link) {
+
+                link.addEventListener("click", function (event) {
+
+                    event.preventDefault();
+
+                    const sectionId =
+                        this.getAttribute("data-section");
+
+                    showSection(sectionId);
+
+                });
+
+            });
+
+
+            /*
+             * Dashboard "View All Reports" button
+             */
+            const dashboardReportsLink =
+                document.querySelector(".dashboard-reports-link");
+
+
+            if (dashboardReportsLink) {
+
+                dashboardReportsLink.addEventListener(
+                    "click",
+                    function (event) {
+
+                        event.preventDefault();
+
+                        showSection("reportsSection");
+
+                    }
+                );
+
+            }
+
+
+            /*
+             * Open correct section if URL contains a hash
+             */
+            const hash =
+                window.location.hash.replace("#", "");
+
+
+            if (
+                hash &&
+                document.getElementById(hash)
+            ) {
+
+                showSection(hash);
+
+            } else {
+
+                showSection("dashboardSection");
+
+            }
+
+
+            /*
+             * Sidebar mobile toggle
+             */
+            const sidebarToggle =
+                document.getElementById("sidebarToggle");
+
+            const adminSidebar =
+                document.getElementById("adminSidebar");
+
+
+            if (
+                sidebarToggle &&
+                adminSidebar
+            ) {
+
+                sidebarToggle.addEventListener(
+                    "click",
+                    function () {
+
+                        adminSidebar.classList.toggle(
+                            "sidebar-open"
+                        );
+
+                    }
+                );
+
+
+                sidebarLinks.forEach(function (link) {
+
+                    link.addEventListener(
+                        "click",
+                        function () {
+
+                            if (
+                                window.innerWidth <= 900
+                            ) {
+
+                                adminSidebar.classList.remove(
+                                    "sidebar-open"
+                                );
+
+                            }
+
+                        }
+                    );
+
+                });
+
+            }
+
+
+            /*
+             * Logout
+             */
+            const logoutBtn =
+                document.getElementById("logoutBtn");
+
+
+            if (logoutBtn) {
+
+                logoutBtn.addEventListener(
+                    "click",
+                    async function () {
+
+                        try {
+
+                            const { error } =
+                                await supabase.auth.signOut();
+
+
+                            if (error) {
+
+                                console.error(
+                                    "Logout error:",
+                                    error
+                                );
+
+                                return;
+
+                            }
+
+
+                            window.location.href =
+                                "login.html";
+
+                        } catch (error) {
+
+                            console.error(
+                                "Logout error:",
+                                error
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
