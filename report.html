@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Report a Problem - Smart Community</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <!-- Leaflet CSS -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+    <style>
+
+        #map {
+            width: 100%;
+            height: 350px;
+            margin-top: 15px;
+            border-radius: 10px;
+            border: 1px solid #d1d5db;
+        }
+
+        #locationMessage {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <header>
+
+        <h1>Smart Community</h1>
+
+        <p>
+            Report a Community Problem
+        </p>
+
+    </header>
+
+
+    <main class="form-container">
+
+        <form id="reportForm">
+
+            <h2>Submit a Report</h2>
+
+
+            <!-- Problem Title -->
+
+            <label for="title">
+                Problem Title
+            </label>
+
+            <input
+                type="text"
+                id="title"
+                placeholder="e.g. Broken street light"
+                required
+            >
+
+
+            <!-- Description -->
+
+            <label for="description">
+                Description
+            </label>
+
+            <textarea
+                id="description"
+                rows="5"
+                placeholder="Describe the problem..."
+                required
+            ></textarea>
+
+
+            <!-- Category -->
+
+            <label for="category">
+                Category
+            </label>
+
+            <select
+                id="category"
+                required
+            >
+
+                <option value="">
+                    -- Select Category --
+                </option>
+
+                <option value="Roads">
+                    Roads
+                </option>
+
+                <option value="Street Lighting">
+                    Street Lighting
+                </option>
+
+                <option value="Waste Management">
+                    Waste Management
+                </option>
+
+                <option value="Water">
+                    Water
+                </option>
+
+                <option value="Drainage">
+                    Drainage
+                </option>
+
+                <option value="Security">
+                    Security
+                </option>
+
+                <option value="Environment">
+                    Environment
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+
+            </select>
+
+
+            <!-- Location -->
+
+            <label for="location">
+                Location
+            </label>
+
+            <input
+                type="text"
+                id="location"
+                placeholder="e.g. Main Street"
+                required
+            >
+
+
+            <!-- Map -->
+
+            <label>
+                Select Problem Location on Map
+            </label>
+
+            <div id="map"></div>
+
+
+            <!-- Current Location -->
+
+            <button
+                type="button"
+                id="locationBtn"
+                class="btn secondary"
+                style="margin-top: 15px;"
+            >
+                📍 Use My Current Location
+            </button>
+
+            <p id="locationMessage"></p>
+
+
+            <!-- Latitude -->
+
+            <label for="latitude">
+                Latitude
+            </label>
+
+            <input
+                type="number"
+                id="latitude"
+                step="any"
+                placeholder="Select location on map"
+                readonly
+            >
+
+
+            <!-- Longitude -->
+
+            <label for="longitude">
+                Longitude
+            </label>
+
+            <input
+                type="number"
+                id="longitude"
+                step="any"
+                placeholder="Select location on map"
+                readonly
+            >
+
+
+            <!-- Photo -->
+
+            <label for="reportImage">
+                Upload Photo (optional)
+            </label>
+
+            <input
+                type="file"
+                id="reportImage"
+                accept="image/*"
+            >
+
+
+            <!-- Submit -->
+
+            <button
+                type="submit"
+                class="btn"
+            >
+                Submit Report
+            </button>
+
+
+            <!-- Message -->
+
+            <p id="reportMessage"></p>
+
+
+            <!-- Back -->
+
+            <p class="form-link">
+
+                <a href="dashboard.html">
+                    ← Back to Dashboard
+                </a>
+
+            </p>
+
+        </form>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            &copy; 2026 Smart Community Problem Reporting System
+        </p>
+
+    </footer>
+
+
+    <!-- Supabase -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
+
+
+    <!-- Leaflet JavaScript -->
+
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    ></script>
+
+
+    <!-- Supabase Connection -->
+
+    <script src="js/supabase.js"></script>
+
+
+    <!-- Report Logic -->
+
+    <script src="js/report.js"></script>
+
+</body>
+
+</html>

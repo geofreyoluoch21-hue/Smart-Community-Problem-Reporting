@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Admin Dashboard - Smart Community</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <!-- Leaflet CSS -->
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+
+    <style>
+
+        /* ============================================
+           ADMIN STATISTICS
+        ============================================ */
+
+        .admin-stats {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(180px, 1fr)
+                );
+
+            gap: 20px;
+
+            margin-bottom: 30px;
+        }
+
+
+        .stat-card {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0, 0, 0, 0.08);
+
+            text-align: center;
+        }
+
+
+        .stat-card h3 {
+
+            font-size: 16px;
+
+            margin-bottom: 12px;
+
+            color: #374151;
+        }
+
+
+        .stat-card p {
+
+            font-size: 32px;
+
+            font-weight: bold;
+
+            color: #0f766e;
+        }
+
+
+        /* ============================================
+           SEARCH AND FILTER
+        ============================================ */
+
+        .admin-filters {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0, 0, 0, 0.08);
+
+            margin-bottom: 30px;
+        }
+
+
+        .admin-filters h3 {
+
+            margin-bottom: 15px;
+        }
+
+
+        .filter-row {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 220px auto;
+
+            gap: 12px;
+        }
+
+
+        .filter-row input,
+        .filter-row select,
+        .filter-row button {
+
+            width: 100%;
+
+            padding: 12px;
+
+            border-radius: 7px;
+
+            font-size: 15px;
+        }
+
+
+        .filter-row input,
+        .filter-row select {
+
+            border:
+                1px solid #d1d5db;
+        }
+
+
+        .clear-filter {
+
+            border: none;
+
+            cursor: pointer;
+
+            background: #374151;
+
+            color: white;
+
+            font-weight: bold;
+        }
+
+
+        .clear-filter:hover {
+
+            opacity: 0.85;
+        }
+
+
+        /* ============================================
+           ADMIN MAP
+        ============================================ */
+
+        .admin-map-card {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0, 0, 0, 0.08);
+
+            margin-bottom: 30px;
+        }
+
+
+        .admin-map-card h2 {
+
+            margin-bottom: 10px;
+        }
+
+
+        .admin-map-card p {
+
+            margin-bottom: 15px;
+
+            color: #4b5563;
+        }
+
+
+        #adminMap {
+
+            width: 100%;
+
+            height: 450px;
+
+            border-radius: 12px;
+
+            border:
+                1px solid #d1d5db;
+        }
+
+
+        /* ============================================
+           REPORT CARDS
+        ============================================ */
+
+        .admin-report-card {
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0, 0, 0, 0.08);
+
+            margin-bottom: 25px;
+        }
+
+
+        .admin-report-card h2 {
+
+            margin-bottom: 15px;
+        }
+
+
+        .admin-report-card p {
+
+            margin-bottom: 10px;
+
+            line-height: 1.6;
+        }
+
+
+        .status-select {
+
+            width: 100%;
+
+            padding: 12px;
+
+            margin-top: 8px;
+
+            border:
+                1px solid #d1d5db;
+
+            border-radius: 7px;
+
+            font-size: 15px;
+
+            background: white;
+        }
+
+
+        .report-photo {
+
+            width: 100%;
+
+            max-width: 500px;
+
+            margin-top: 10px;
+
+            border-radius: 10px;
+        }
+
+
+        .admin-section-title {
+
+            margin-bottom: 20px;
+        }
+
+
+        /* ============================================
+           MOBILE
+        ============================================ */
+
+        @media (max-width: 700px) {
+
+            .filter-row {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .admin-stats {
+
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+
+            .stat-card {
+
+                padding: 20px 10px;
+            }
+
+
+            .stat-card p {
+
+                font-size: 26px;
+            }
+
+
+            #adminMap {
+
+                height: 350px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ============================================
+         HEADER
+    ============================================ -->
+
+    <header>
+
+        <h1>
+            Smart Community
+        </h1>
+
+        <p>
+            Administrator Dashboard
+        </p>
+
+    </header>
+
+
+    <!-- ============================================
+         MAIN CONTENT
+    ============================================ -->
+
+    <main class="dashboard-container">
+
+
+        <!-- ADMIN WELCOME -->
+
+        <div class="welcome-card">
+
+            <h2>
+                Admin Dashboard
+            </h2>
+
+            <p id="adminEmail">
+                Checking administrator access...
+            </p>
+
+        </div>
+
+
+        <!-- COMMUNITY REPORTS -->
+
+        <div class="welcome-card">
+
+            <h2>
+                Community Reports
+            </h2>
+
+            <p>
+                View and manage reports submitted
+                by community residents.
+            </p>
+
+        </div>
+
+
+        <!-- ============================================
+             STATISTICS
+        ============================================ -->
+
+        <div class="admin-stats">
+
+
+            <div class="stat-card">
+
+                <h3>
+                    Total Reports
+                </h3>
+
+                <p id="totalReports">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>
+                    Submitted
+                </h3>
+
+                <p id="submittedReports">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>
+                    Under Review
+                </h3>
+
+                <p id="underReviewReports">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>
+                    In Progress
+                </h3>
+
+                <p id="inProgressReports">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>
+                    Resolved
+                </h3>
+
+                <p id="resolvedReports">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>
+                    Rejected
+                </h3>
+
+                <p id="rejectedReports">
+                    0
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ============================================
+             ADMIN MAP
+        ============================================ -->
+
+        <div class="admin-map-card">
+
+            <h2>
+                📍 Report Locations
+            </h2>
+
+            <p>
+                View the locations of submitted
+                community problems.
+            </p>
+
+
+            <div id="adminMap"></div>
+
+        </div>
+
+
+        <!-- ============================================
+             SEARCH AND FILTER
+        ============================================ -->
+
+        <div class="admin-filters">
+
+            <h3>
+                Search and Filter Reports
+            </h3>
+
+
+            <div class="filter-row">
+
+
+                <input
+                    type="text"
+                    id="searchReports"
+                    placeholder="Search title, description, location, or resident..."
+                >
+
+
+                <select id="statusFilter">
+
+                    <option value="">
+                        All Statuses
+                    </option>
+
+                    <option value="Submitted">
+                        Submitted
+                    </option>
+
+                    <option value="Under Review">
+                        Under Review
+                    </option>
+
+                    <option value="In Progress">
+                        In Progress
+                    </option>
+
+                    <option value="Resolved">
+                        Resolved
+                    </option>
+
+                    <option value="Rejected">
+                        Rejected
+                    </option>
+
+                </select>
+
+
+                <button
+                    type="button"
+                    id="clearFilters"
+                    class="clear-filter"
+                >
+                    Clear Filters
+                </button>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- ============================================
+             REPORT LIST
+        ============================================ -->
+
+        <h2 class="admin-section-title">
+
+            All Community Reports
+
+        </h2>
+
+
+        <div id="adminReports">
+
+            <div class="welcome-card">
+
+                <p>
+                    Loading reports...
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- BACK -->
+
+        <p class="form-link">
+
+            <a href="dashboard.html">
+                ← Back to Dashboard
+            </a>
+
+        </p>
+
+
+    </main>
+
+
+    <!-- ============================================
+         FOOTER
+    ============================================ -->
+
+    <footer>
+
+        <p>
+            &copy; 2026 Smart Community Problem Reporting System
+        </p>
+
+    </footer>
+
+
+    <!-- ============================================
+         SUPABASE
+    ============================================ -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
+
+
+    <!-- ============================================
+         LEAFLET
+    ============================================ -->
+
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    ></script>
+
+
+    <!-- SUPABASE CONNECTION -->
+
+    <script src="js/supabase.js"></script>
+
+
+    <!-- ADMIN LOGIC -->
+
+    <script src="js/admin.js"></script>
+
+
+</body>
+
+</html>

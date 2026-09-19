@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Smart Community</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Smart Community</h1>
+        <p>Problem Reporting System</p>
+    </header>
+
+    <main class="form-container">
+
+        <form id="loginForm">
+
+            <h2>Login</h2>
+
+            <label for="email">Email Address</label>
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                required
+            >
+
+            <label for="password">Password</label>
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                required
+            >
+
+            <button type="submit" class="btn">
+                Login
+            </button>
+
+            <p id="loginMessage"></p>
+
+            <p class="form-link">
+                Don't have an account?
+                <a href="register.html">Create an account</a>
+            </p>
+
+        </form>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Smart Community Problem Reporting System</p>
+    </footer>
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Supabase connection -->
+    <script src="js/supabase.js"></script>
+
+    <!-- Authentication -->
+    <script src="js/auth.js"></script>
+
+</body>
+</html>
