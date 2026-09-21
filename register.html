@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Create Account - Smart Community</title>
 
     <link rel="stylesheet" href="css/style.css">
@@ -15,13 +16,19 @@
         <p>Create Your Account</p>
     </header>
 
+
     <main class="form-container">
 
         <form id="registerForm">
 
             <h2>Register</h2>
 
-            <label for="fullName">Full Name</label>
+
+            <!-- Full Name -->
+            <label for="fullName">
+                Full Name
+            </label>
+
             <input
                 type="text"
                 id="fullName"
@@ -29,7 +36,12 @@
                 required
             >
 
-            <label for="phone">Phone Number</label>
+
+            <!-- Phone -->
+            <label for="phone">
+                Phone Number
+            </label>
+
             <input
                 type="tel"
                 id="phone"
@@ -37,7 +49,12 @@
                 required
             >
 
-            <label for="email">Email Address</label>
+
+            <!-- Email -->
+            <label for="email">
+                Email Address
+            </label>
+
             <input
                 type="email"
                 id="email"
@@ -45,7 +62,12 @@
                 required
             >
 
-            <label for="password">Password</label>
+
+            <!-- Password -->
+            <label for="password">
+                Password
+            </label>
+
             <input
                 type="password"
                 id="password"
@@ -54,39 +76,163 @@
                 minlength="6"
             >
 
-            <label for="confirmPassword">Confirm Password</label>
+            <label class="password-toggle">
+                <input
+                    type="checkbox"
+                    id="showPassword"
+                >
+                Show password
+            </label>
+
+
+            <!-- Confirm Password -->
+            <label for="confirmPassword">
+                Confirm Password
+            </label>
+
             <input
                 type="password"
                 id="confirmPassword"
                 placeholder="Confirm your password"
                 required
+                minlength="6"
             >
 
-            <button type="submit" class="btn">Create Account</button>
+            <label class="password-toggle">
+                <input
+                    type="checkbox"
+                    id="showConfirmPassword"
+                >
+                Show confirm password
+            </label>
 
+
+            <!-- Password Match Message -->
+            <p id="passwordMatchMessage"></p>
+
+
+            <!-- Submit -->
+            <button
+                type="submit"
+                class="btn"
+            >
+                Create Account
+            </button>
+
+
+            <!-- Registration Message -->
             <p id="registerMessage"></p>
 
+
+            <!-- Login Link -->
             <p class="form-link">
                 Already have an account?
-                <a href="login.html">Login here</a>
+                <a href="login.html">
+                    Login here
+                </a>
             </p>
 
         </form>
 
     </main>
 
+
     <footer>
-        <p>&copy; 2026 Smart Community Problem Reporting System</p>
+        <p>
+            &copy; 2026 Smart Community Problem Reporting System
+        </p>
     </footer>
+
 
     <!-- Supabase library -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <!-- Our Supabase connection -->
+
+    <!-- Supabase connection -->
     <script src="js/supabase.js"></script>
 
-    <!-- Registration logic -->
+
+    <!-- Authentication logic -->
     <script src="js/auth.js"></script>
+
+
+    <!-- Password visibility and matching -->
+    <script>
+        const passwordInput =
+            document.getElementById("password");
+
+        const confirmPasswordInput =
+            document.getElementById("confirmPassword");
+
+        const showPassword =
+            document.getElementById("showPassword");
+
+        const showConfirmPassword =
+            document.getElementById("showConfirmPassword");
+
+        const passwordMatchMessage =
+            document.getElementById("passwordMatchMessage");
+
+
+        // Show / hide password
+        showPassword.addEventListener("change", function () {
+
+            passwordInput.type =
+                this.checked ? "text" : "password";
+
+        });
+
+
+        // Show / hide confirm password
+        showConfirmPassword.addEventListener("change", function () {
+
+            confirmPasswordInput.type =
+                this.checked ? "text" : "password";
+
+        });
+
+
+        // Check passwords while typing
+        function checkPasswords() {
+
+            const password =
+                passwordInput.value;
+
+            const confirmPassword =
+                confirmPasswordInput.value;
+
+
+            if (!confirmPassword) {
+
+                passwordMatchMessage.textContent = "";
+
+                return;
+            }
+
+
+            if (password === confirmPassword) {
+
+                passwordMatchMessage.textContent =
+                    "Passwords match.";
+
+            } else {
+
+                passwordMatchMessage.textContent =
+                    "Passwords do not match.";
+            }
+        }
+
+
+        passwordInput.addEventListener(
+            "input",
+            checkPasswords
+        );
+
+        confirmPasswordInput.addEventListener(
+            "input",
+            checkPasswords
+        );
+    </script>
 
 </body>
 </html>
