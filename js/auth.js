@@ -60,6 +60,12 @@ if (registerForm) {
 
                     options: {
 
+                        // IMPORTANT:
+                        // Send the user back to the live GitHub Pages website
+                        // after email confirmation.
+                        emailRedirectTo:
+                            "https://geofreyoluoch21-hue.github.io/Smart-Community-Problem-Reporting/",
+
                         data: {
 
                             full_name: fullName,
