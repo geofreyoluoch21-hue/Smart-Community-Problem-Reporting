@@ -1435,3 +1435,992 @@ form button {
 .admin-page.admin-compact .admin-page-heading {
     margin-bottom: 12px;
 }
+/* =========================================================
+   SMART COMMUNITY - NEW PROFESSIONAL VISUAL DESIGN
+   Landing Page + Admin Dashboard
+   ========================================================= */
+
+
+/* =========================================================
+   LANDING PAGE
+   ========================================================= */
+
+.landing-page {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #16324f;
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(45, 212, 191, 0.18),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(96, 165, 250, 0.18),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #eefbf8 0%,
+            #f4f9ff 50%,
+            #eef7f4 100%
+        );
+}
+
+
+/* HEADER */
+
+.landing-header {
+    min-height: 92px;
+    padding: 0 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background:
+        linear-gradient(
+            135deg,
+            #073b4c,
+            #0b5d68,
+            #087f72
+        );
+
+    color: white;
+
+    box-shadow:
+        0 8px 25px rgba(7, 59, 76, 0.18);
+}
+
+
+.landing-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+
+.landing-brand-icon {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255, 0.14);
+
+    font-size: 27px;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+
+.landing-brand h1 {
+    margin: 0;
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+
+.landing-brand h1 span {
+    color: #5eead4;
+}
+
+
+.landing-brand p {
+    margin: 4px 0 0;
+    font-size: 13px;
+    opacity: 0.82;
+}
+
+
+.landing-header-message {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+
+.landing-header-message > span {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    font-size: 19px;
+}
+
+
+.landing-header-message strong {
+    display: block;
+    font-size: 14px;
+}
+
+
+.landing-header-message small {
+    display: block;
+    margin-top: 3px;
+
+    font-size: 11px;
+    opacity: 0.7;
+}
+
+
+/* HERO */
+
+.landing-hero {
+    position: relative;
+    min-height: calc(100vh - 160px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    padding: 70px 7%;
+}
+
+
+.landing-content {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 1180px;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.25fr)
+        minmax(280px, 0.75fr);
+
+    gap: 45px;
+
+    align-items: center;
+}
+
+
+/* MAIN CARD */
+
+.landing-card {
+    padding: 55px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(255, 255, 255, 0.88);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.9);
+
+    box-shadow:
+        0 25px 70px rgba(22, 50, 79, 0.12);
+
+    backdrop-filter: blur(12px);
+}
+
+
+.landing-logo {
+    width: 64px;
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 24px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0f766e,
+            #14b8a6
+        );
+
+    font-size: 32px;
+
+    box-shadow:
+        0 12px 30px rgba(20, 184, 166, 0.28);
+}
+
+
+.landing-eyebrow {
+    margin: 0 0 10px;
+
+    color: #0f9d8a;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+.landing-card h2 {
+    margin: 0;
+
+    font-size: clamp(38px, 5vw, 62px);
+
+    line-height: 1.03;
+
+    letter-spacing: -2px;
+
+    color: #12304b;
+}
+
+
+.landing-card h2 span {
+    background:
+        linear-gradient(
+            90deg,
+            #0f766e,
+            #10b981
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+
+.landing-description {
+    max-width: 650px;
+
+    margin: 22px 0 30px;
+
+    color: #60758b;
+
+    font-size: 17px;
+    line-height: 1.75;
+}
+
+
+/* BUTTONS */
+
+.landing-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+
+.landing-btn {
+    min-width: 165px;
+
+    padding: 15px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    border-radius: 14px;
+
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.landing-btn:hover {
+    transform: translateY(-3px);
+}
+
+
+.landing-btn.primary {
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #087f72,
+            #10a88f
+        );
+
+    box-shadow:
+        0 12px 25px rgba(8, 127, 114, 0.25);
+}
+
+
+.landing-btn.secondary {
+    color: #16445c;
+
+    background: white;
+
+    border:
+        1px solid #d5e4eb;
+
+    box-shadow:
+        0 8px 20px rgba(22, 50, 79, 0.06);
+}
+
+
+.landing-btn strong {
+    margin-left: auto;
+    font-size: 18px;
+}
+
+
+/* SIDE MESSAGE */
+
+.landing-side-message {
+    padding: 35px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(7, 59, 76, 0.96),
+            rgba(8, 127, 114, 0.94)
+        );
+
+    color: white;
+
+    box-shadow:
+        0 25px 55px rgba(7, 59, 76, 0.22);
+
+    position: relative;
+    overflow: hidden;
+}
+
+
+.landing-side-message::after {
+    content: "";
+
+    position: absolute;
+
+    width: 190px;
+    height: 190px;
+
+    right: -80px;
+    bottom: -80px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(94, 234, 212, 0.15);
+}
+
+
+.side-message-title {
+    font-size: 32px;
+    font-weight: 800;
+}
+
+
+.side-message-subtitle {
+    margin-top: 5px;
+
+    color: #5eead4;
+
+    font-size: 21px;
+    font-weight: 700;
+}
+
+
+.side-message-line {
+    width: 80px;
+    height: 4px;
+
+    margin: 18px 0;
+
+    border-radius: 20px;
+
+    background: #5eead4;
+}
+
+
+.landing-side-message p {
+    max-width: 330px;
+
+    color: rgba(255, 255, 255, 0.78);
+
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/* FEATURES */
+
+.landing-features {
+    grid-column: 1 / -1;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+}
+
+
+.landing-feature {
+    padding: 18px;
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    border-radius: 17px;
+
+    background:
+        rgba(255, 255, 255, 0.82);
+
+    border:
+        1px solid rgba(213, 228, 235, 0.8);
+
+    box-shadow:
+        0 10px 30px rgba(22, 50, 79, 0.06);
+}
+
+
+.feature-icon {
+    width: 43px;
+    height: 43px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background: #e6f7f3;
+
+    font-size: 19px;
+}
+
+
+.landing-feature strong {
+    display: block;
+
+    color: #173d59;
+
+    font-size: 13px;
+}
+
+
+.landing-feature span {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #7890a2;
+
+    font-size: 11px;
+}
+
+
+/* BACKGROUND DECORATIONS */
+
+.landing-background-shape {
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+.shape-one {
+    width: 420px;
+    height: 420px;
+
+    right: -170px;
+    top: 30px;
+
+    background:
+        rgba(20, 184, 166, 0.10);
+}
+
+
+.shape-two {
+    width: 320px;
+    height: 320px;
+
+    left: -150px;
+    bottom: -130px;
+
+    background:
+        rgba(59, 130, 246, 0.08);
+}
+
+
+/* FOOTER */
+
+.landing-footer {
+    min-height: 68px;
+
+    padding: 15px 7%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    background: #082f42;
+
+    color: rgba(255, 255, 255, 0.7);
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   ADMIN DASHBOARD - PROFESSIONAL BACKGROUND
+   ========================================================= */
+
+.admin-page {
+    background:
+        radial-gradient(
+            circle at 85% 5%,
+            rgba(20, 184, 166, 0.10),
+            transparent 25%
+        ),
+        linear-gradient(
+            135deg,
+            #f4f9fc 0%,
+            #eef7f6 50%,
+            #f7fafc 100%
+        );
+
+    color: #17324d;
+}
+
+
+/* SIDEBAR */
+
+.admin-sidebar {
+    background:
+        linear-gradient(
+            180deg,
+            #073b4c 0%,
+            #0a4658 48%,
+            #075c59 100%
+        );
+
+    box-shadow:
+        8px 0 30px rgba(7, 59, 76, 0.12);
+}
+
+
+/* SIDEBAR BRAND */
+
+.admin-sidebar .sidebar-brand {
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.10);
+}
+
+
+.admin-sidebar .sidebar-brand-text {
+    color: white;
+}
+
+
+/* ACTIVE NAVIGATION */
+
+.admin-sidebar .sidebar-link.active {
+    background:
+        linear-gradient(
+            135deg,
+            #0fa88f,
+            #10b981
+        );
+
+    box-shadow:
+        0 8px 22px rgba(16, 185, 129, 0.22);
+}
+
+
+/* HOVER NAVIGATION */
+
+.admin-sidebar .sidebar-link:hover {
+    background:
+        rgba(255, 255, 255, 0.10);
+}
+
+
+/* MAIN ADMIN AREA */
+
+.admin-main {
+    background: transparent;
+}
+
+
+/* TOPBAR */
+
+.admin-topbar {
+    background:
+        rgba(255, 255, 255, 0.88);
+
+    border-bottom:
+        1px solid rgba(210, 225, 232, 0.8);
+
+    box-shadow:
+        0 4px 20px rgba(22, 50, 79, 0.05);
+
+    backdrop-filter: blur(12px);
+}
+
+
+/* PAGE HEADINGS */
+
+.admin-page-heading h1,
+.admin-content h1 {
+    color: #123c59;
+}
+
+
+.admin-page-heading p {
+    color: #6b8194;
+}
+
+
+/* STAT CARDS */
+
+.stat-card {
+    border:
+        1px solid rgba(211, 227, 234, 0.8);
+
+    background:
+        rgba(255, 255, 255, 0.90);
+
+    box-shadow:
+        0 12px 35px rgba(22, 50, 79, 0.07);
+
+    border-radius: 18px;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.stat-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 18px 40px rgba(22, 50, 79, 0.11);
+}
+
+
+/* REPORT CARDS */
+
+.report-card {
+    background:
+        rgba(255, 255, 255, 0.94);
+
+    border:
+        1px solid rgba(211, 227, 234, 0.85);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 12px 32px rgba(22, 50, 79, 0.06);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.report-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 18px 40px rgba(22, 50, 79, 0.10);
+}
+
+
+/* TOOLBAR */
+
+.admin-toolbar {
+    background:
+        rgba(255, 255, 255, 0.88);
+
+    border:
+        1px solid rgba(211, 227, 234, 0.8);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 28px rgba(22, 50, 79, 0.05);
+}
+
+
+/* SECTION CARDS */
+
+.admin-section,
+.welcome-card,
+.settings-card,
+.resident-card {
+    border-radius: 18px;
+}
+
+
+/* BUTTONS */
+
+.admin-page button {
+    border-radius: 11px;
+}
+
+
+/* MAP */
+
+#adminMap {
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 15px 35px rgba(22, 50, 79, 0.10);
+}
+
+
+/* =========================================================
+   RESPONSIVE LANDING PAGE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .landing-header {
+        padding: 18px 5%;
+    }
+
+    .landing-header-message {
+        display: none;
+    }
+
+    .landing-hero {
+        padding: 45px 5%;
+    }
+
+    .landing-content {
+        grid-template-columns: 1fr;
+    }
+
+    .landing-side-message {
+        order: 2;
+    }
+
+    .landing-features {
+        order: 3;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .landing-brand h1 {
+        font-size: 20px;
+    }
+
+    .landing-brand p {
+        font-size: 11px;
+    }
+
+    .landing-card {
+        padding: 32px 24px;
+
+        border-radius: 22px;
+    }
+
+    .landing-card h2 {
+        font-size: 39px;
+    }
+
+    .landing-description {
+        font-size: 15px;
+    }
+
+    .landing-buttons {
+        flex-direction: column;
+    }
+
+    .landing-btn {
+        width: 100%;
+    }
+
+    .landing-features {
+        grid-template-columns: 1fr;
+    }
+
+    .landing-footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+}
+/* =========================================================
+   INTERACTIVE LANDING FEATURE CARDS
+   ========================================================= */
+
+.landing-feature {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.landing-feature:hover {
+    transform: translateY(-6px);
+
+    border-color: #10b981;
+
+    box-shadow:
+        0 18px 38px rgba(22, 50, 79, 0.12);
+}
+
+.landing-feature:hover .feature-icon {
+    transform: scale(1.08);
+
+    background: #d9f7ef;
+}
+
+.feature-icon {
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+
+/* =========================================================
+   LANDING INFORMATION SECTIONS
+   ========================================================= */
+
+.landing-info-section {
+    padding: 30px 7%;
+    background: transparent;
+}
+
+.landing-info-card {
+    max-width: 1180px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    padding: 32px;
+
+    border-radius: 22px;
+
+    background: rgba(255, 255, 255, 0.88);
+
+    border:
+        1px solid rgba(213, 228, 235, 0.85);
+
+    box-shadow:
+        0 12px 35px rgba(22, 50, 79, 0.07);
+}
+
+.landing-info-icon {
+    width: 70px;
+    height: 70px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dff8f2,
+            #e8f2ff
+        );
+
+    font-size: 32px;
+}
+
+.landing-info-card h2 {
+    margin: 5px 0 10px;
+
+    color: #123c59;
+
+    font-size: 28px;
+}
+
+.landing-info-card p:not(.landing-eyebrow) {
+    margin: 0;
+
+    max-width: 850px;
+
+    color: #657c8f;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   SMOOTH PAGE SCROLLING
+   ========================================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* =========================================================
+   MOBILE INFORMATION SECTIONS
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .landing-info-section {
+        padding: 20px 5%;
+    }
+
+    .landing-info-card {
+        flex-direction: column;
+        align-items: flex-start;
+
+        padding: 25px;
+    }
+
+    .landing-info-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 27px;
+    }
+
+    .landing-info-card h2 {
+        font-size: 23px;
+    }
+
+}
