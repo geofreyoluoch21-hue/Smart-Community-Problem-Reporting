@@ -8,6 +8,44 @@
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <style>
+    /* ============================================
+       ADMIN DASHBOARD - PROFESSIONAL BACKGROUND
+       ============================================ */
+
+    body.admin-page {
+        background:
+            linear-gradient(
+                rgba(7, 30, 40, 0.82),
+                rgba(7, 30, 40, 0.82)
+            ),
+            url("https://images.unsplash.com/photo-1494522358652-f30e61a60313?auto=format&fit=crop&w=2200&q=85")
+            center center / cover fixed no-repeat !important;
+    }
+
+    /* Keep the dashboard content readable */
+    body.admin-page .admin-main {
+        background: transparent;
+    }
+
+    /* Slight glass effect on the top bar */
+    body.admin-page .admin-topbar {
+        background: rgba(255, 255, 255, 0.10);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    /* Make page headings readable over the background */
+    body.admin-page .admin-page-heading h1,
+    body.admin-page .admin-page-heading p {
+        color: white;
+    }
+
+    body.admin-page .admin-page-heading p {
+        opacity: 0.78;
+    }
+</style>
 
     <!-- Leaflet CSS -->
     <link
