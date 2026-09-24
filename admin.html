@@ -9,42 +9,416 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css">
     <style>
-    /* ============================================
-       ADMIN DASHBOARD - PROFESSIONAL BACKGROUND
-       ============================================ */
+/* =========================================================
+   SMART COMMUNITY — CLEAN ADMIN DASHBOARD
+   Visual language: login page / glass / teal / green
+   ========================================================= */
+:root {
+    --admin-green: #08b889;
+    --admin-green-dark: #079b78;
+    --admin-teal: #063f4d;
+    --admin-ink: #17344a;
+    --admin-muted: #667b89;
+    --admin-border: #dfe9ee;
+    --admin-surface: rgba(255,255,255,.96);
+    --admin-soft: #f5f9fb;
+    --admin-shadow: 0 18px 45px rgba(4,28,39,.16);
+}
 
-    body.admin-page {
-        background:
-            linear-gradient(
-                rgba(7, 30, 40, 0.82),
-                rgba(7, 30, 40, 0.82)
-            ),
-            url("https://images.unsplash.com/photo-1494522358652-f30e61a60313?auto=format&fit=crop&w=2200&q=85")
-            center center / cover fixed no-repeat !important;
-    }
+body.admin-page {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(5, 29, 39, .78), rgba(5, 29, 39, .84)),
+        url("https://images.unsplash.com/photo-1494522358652-f30e61a60313?auto=format&fit=crop&w=2200&q=85")
+        center / cover fixed no-repeat;
+    color: var(--admin-ink);
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+}
 
-    /* Keep the dashboard content readable */
-    body.admin-page .admin-main {
-        background: transparent;
-    }
+body.admin-page .admin-sidebar {
+    background: rgba(4, 55, 67, .94) !important;
+    border-right: 1px solid rgba(255,255,255,.10) !important;
+    box-shadow: 10px 0 35px rgba(0,0,0,.20) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
 
-    /* Slight glass effect on the top bar */
-    body.admin-page .admin-topbar {
-        background: rgba(255, 255, 255, 0.10);
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-    }
+body.admin-page .sidebar-brand {
+    border-bottom: 1px solid rgba(255,255,255,.10) !important;
+}
 
-    /* Make page headings readable over the background */
-    body.admin-page .admin-page-heading h1,
-    body.admin-page .admin-page-heading p {
-        color: white;
-    }
+body.admin-page .sidebar-brand .brand-text strong,
+body.admin-page .sidebar-brand .brand-text span {
+    color: #fff !important;
+}
 
-    body.admin-page .admin-page-heading p {
-        opacity: 0.78;
-    }
+body.admin-page .sidebar-brand .brand-text span {
+    opacity: .72;
+}
+
+body.admin-page .sidebar-link {
+    color: rgba(255,255,255,.84) !important;
+    border-radius: 14px !important;
+    transition: .2s ease;
+}
+
+body.admin-page .sidebar-link:hover {
+    background: rgba(255,255,255,.09) !important;
+    color: #fff !important;
+    transform: translateX(2px);
+}
+
+body.admin-page .sidebar-link.active {
+    background: linear-gradient(135deg, var(--admin-green), #10a67f) !important;
+    color: #fff !important;
+    box-shadow: 0 10px 25px rgba(8,184,137,.25);
+}
+
+body.admin-page .sidebar-logout:hover {
+    background: rgba(255,255,255,.09) !important;
+    color: #fff !important;
+}
+
+body.admin-page .admin-main {
+    background: transparent !important;
+}
+
+body.admin-page .admin-topbar {
+    background: rgba(5,35,45,.76) !important;
+    border-bottom: 1px solid rgba(255,255,255,.12) !important;
+    box-shadow: 0 8px 25px rgba(0,0,0,.12) !important;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+body.admin-page .admin-topbar-title,
+body.admin-page .admin-topbar-title span,
+body.admin-page .admin-user-info strong,
+body.admin-page .admin-user-info span,
+body.admin-page .sidebar-toggle {
+    color: #fff !important;
+}
+
+body.admin-page .admin-user-info span {
+    opacity: .70;
+}
+
+body.admin-page .admin-avatar {
+    background: rgba(255,255,255,.94) !important;
+    color: #24516a !important;
+}
+
+body.admin-page .admin-content {
+    background: transparent !important;
+    padding: 28px;
+}
+
+/* Main sections are deliberately solid/light glass for readability. */
+body.admin-page .admin-section {
+    background: var(--admin-surface) !important;
+    color: var(--admin-ink) !important;
+    border: 1px solid rgba(255,255,255,.80) !important;
+    border-radius: 26px !important;
+    box-shadow: var(--admin-shadow) !important;
+    padding: 30px !important;
+    margin-bottom: 26px;
+}
+
+body.admin-page .admin-page-heading {
+    margin-bottom: 24px;
+}
+
+body.admin-page .admin-page-heading h1,
+body.admin-page .admin-section h1,
+body.admin-page .admin-section h2,
+body.admin-page .admin-section h3,
+body.admin-page .admin-section h4 {
+    color: var(--admin-ink) !important;
+    text-shadow: none !important;
+}
+
+body.admin-page .admin-page-heading h1 {
+    margin: 0 0 7px;
+    font-size: 34px;
+    font-weight: 800;
+}
+
+body.admin-page .admin-page-heading p,
+body.admin-page .admin-section p {
+    color: var(--admin-muted) !important;
+    text-shadow: none !important;
+}
+
+body.admin-page .stats-grid {
+    gap: 16px !important;
+    margin-bottom: 26px;
+}
+
+body.admin-page .stat-card {
+    background: linear-gradient(145deg, #fff, #f5fafc) !important;
+    border: 1px solid var(--admin-border) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 10px 25px rgba(12,48,65,.09) !important;
+    color: var(--admin-ink) !important;
+    transition: .2s ease;
+}
+
+body.admin-page .stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(12,48,65,.14) !important;
+}
+
+body.admin-page .stat-content span {
+    color: #617685 !important;
+}
+
+body.admin-page .stat-content strong {
+    color: var(--admin-ink) !important;
+}
+
+body.admin-page .admin-dashboard-intro,
+body.admin-page .admin-dashboard-recent,
+body.admin-page .map-info-card,
+body.admin-page .feature-placeholder {
+    background: var(--admin-soft) !important;
+    color: var(--admin-ink) !important;
+    border: 1px solid var(--admin-border) !important;
+    border-radius: 20px !important;
+    box-shadow: none !important;
+}
+
+body.admin-page .admin-dashboard-intro {
+    padding: 24px !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 22px;
+}
+
+body.admin-page .admin-dashboard-intro h2,
+body.admin-page .admin-dashboard-recent h2,
+body.admin-page .section-heading h2,
+body.admin-page .admin-section-heading h2 {
+    color: var(--admin-ink) !important;
+}
+
+body.admin-page .admin-dashboard-recent {
+    padding: 24px !important;
+}
+
+body.admin-page .admin-primary-action,
+body.admin-page .admin-btn-primary,
+body.admin-page .primary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px !important;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--admin-green), #10a67f) !important;
+    color: #fff !important;
+    border: 0 !important;
+    box-shadow: 0 8px 20px rgba(8,184,137,.22) !important;
+    text-decoration: none;
+}
+
+body.admin-page .admin-secondary-action {
+    background: #fff !important;
+    color: var(--admin-ink) !important;
+    border: 1px solid #d7e2e8 !important;
+    border-radius: 12px !important;
+}
+
+body.admin-page .admin-toolbar {
+    background: #f7fafb !important;
+    border: 1px solid var(--admin-border) !important;
+    border-radius: 18px !important;
+    box-shadow: none !important;
+}
+
+body.admin-page .admin-toolbar input,
+body.admin-page .admin-toolbar select,
+body.admin-page #settingsSection select {
+    background: #fff !important;
+    color: var(--admin-ink) !important;
+    border: 1px solid #d8e3e9 !important;
+}
+
+body.admin-page .search-box {
+    background: #fff !important;
+    border: 1px solid #d8e3e9 !important;
+    border-radius: 12px !important;
+}
+
+body.admin-page .search-box input {
+    border: 0 !important;
+    box-shadow: none !important;
+    color: var(--admin-ink) !important;
+}
+
+body.admin-page #adminReports {
+    margin-top: 18px;
+}
+
+body.admin-page .report-card {
+    background: #fff !important;
+    color: var(--admin-ink) !important;
+    border: 1px solid var(--admin-border) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 10px 28px rgba(12,48,65,.08) !important;
+}
+
+body.admin-page .report-card h1,
+body.admin-page .report-card h2,
+body.admin-page .report-card h3,
+body.admin-page .report-card h4,
+body.admin-page .report-card p,
+body.admin-page .report-card span {
+    color: var(--admin-ink) !important;
+    text-shadow: none !important;
+}
+
+body.admin-page #adminMap {
+    min-height: 520px;
+    border-radius: 20px !important;
+    overflow: hidden;
+    box-shadow: 0 12px 28px rgba(12,48,65,.12) !important;
+}
+
+body.admin-page .map-info-card {
+    display: flex;
+    gap: 15px;
+    padding: 20px !important;
+    margin-bottom: 18px;
+}
+
+body.admin-page .map-info-card h3 {
+    margin: 0 0 4px;
+}
+
+body.admin-page .map-info-card p {
+    margin: 0;
+}
+
+body.admin-page .feature-placeholder {
+    padding: 42px 28px !important;
+    text-align: center;
+}
+
+body.admin-page .feature-placeholder h2 {
+    margin: 10px 0 8px;
+}
+
+body.admin-page .feature-status {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: #e8f8f3;
+    color: #087e64;
+    font-weight: 700;
+}
+
+/* Settings cards */
+body.admin-page .settings-card,
+body.admin-page .settings-section {
+    background: #fff !important;
+    color: var(--admin-ink) !important;
+    border: 1px solid var(--admin-border) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 10px 25px rgba(12,48,65,.07) !important;
+}
+
+body.admin-page #settingsSection h2,
+body.admin-page #settingsSection h3,
+body.admin-page #settingsSection strong,
+body.admin-page #settingsSection label {
+    color: var(--admin-ink) !important;
+    text-shadow: none !important;
+}
+
+body.admin-page #settingsSection p,
+body.admin-page #settingsSection .setting-item span {
+    color: var(--admin-muted) !important;
+    text-shadow: none !important;
+}
+
+body.admin-page #settingsSection input[type="checkbox"] {
+    accent-color: var(--admin-green);
+}
+
+body.admin-page .admin-loading {
+    color: var(--admin-muted) !important;
+}
+
+/* Existing dark-mode setting remains functional and readable. */
+body.admin-page.admin-dark-theme .admin-section {
+    background: rgba(13,35,45,.97) !important;
+    color: #fff !important;
+    border-color: rgba(255,255,255,.08) !important;
+}
+
+body.admin-page.admin-dark-theme .admin-section h1,
+body.admin-page.admin-dark-theme .admin-section h2,
+body.admin-page.admin-dark-theme .admin-section h3,
+body.admin-page.admin-dark-theme .admin-section h4,
+body.admin-page.admin-dark-theme .admin-section strong {
+    color: #fff !important;
+}
+
+body.admin-page.admin-dark-theme .admin-section p,
+body.admin-page.admin-dark-theme .admin-section .setting-item span {
+    color: rgba(255,255,255,.72) !important;
+}
+
+body.admin-page.admin-dark-theme .admin-dashboard-intro,
+body.admin-page.admin-dark-theme .admin-dashboard-recent,
+body.admin-page.admin-dark-theme .map-info-card,
+body.admin-page.admin-dark-theme .feature-placeholder,
+body.admin-page.admin-dark-theme .report-card,
+body.admin-page.admin-dark-theme .settings-card,
+body.admin-page.admin-dark-theme .settings-section {
+    background: rgba(255,255,255,.07) !important;
+    border-color: rgba(255,255,255,.10) !important;
+}
+
+body.admin-page.admin-dark-theme .report-card h1,
+body.admin-page.admin-dark-theme .report-card h2,
+body.admin-page.admin-dark-theme .report-card h3,
+body.admin-page.admin-dark-theme .report-card h4,
+body.admin-page.admin-dark-theme .report-card p,
+body.admin-page.admin-dark-theme .report-card span,
+body.admin-page.admin-dark-theme #settingsSection h2,
+body.admin-page.admin-dark-theme #settingsSection h3,
+body.admin-page.admin-dark-theme #settingsSection strong,
+body.admin-page.admin-dark-theme #settingsSection label {
+    color: #fff !important;
+}
+
+body.admin-page.admin-dark-theme .admin-toolbar {
+    background: rgba(255,255,255,.06) !important;
+    border-color: rgba(255,255,255,.10) !important;
+}
+
+body.admin-page.admin-dark-theme .admin-toolbar input,
+body.admin-page.admin-dark-theme .admin-toolbar select,
+body.admin-page.admin-dark-theme #settingsSection select {
+    background: rgba(255,255,255,.10) !important;
+    color: #fff !important;
+    border-color: rgba(255,255,255,.16) !important;
+}
+
+@media (max-width: 900px) {
+    body.admin-page .admin-content { padding: 18px; }
+    body.admin-page .admin-section { padding: 20px !important; border-radius: 22px !important; }
+    body.admin-page .admin-dashboard-intro { align-items: flex-start; flex-direction: column; }
+}
+
+@media (max-width: 768px) {
+    body.admin-page .admin-page-heading h1 { font-size: 28px; }
+    body.admin-page .stat-card { border-radius: 17px !important; }
+}
 </style>
 
     <!-- Leaflet CSS -->
