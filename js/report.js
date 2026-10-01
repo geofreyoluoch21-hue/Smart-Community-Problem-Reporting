@@ -295,7 +295,9 @@ if (reportForm) {
                 }
 
 
-                // Get form values
+                // ====================================
+                // GET FORM VALUES
+                // ====================================
 
                 const title =
                     document.getElementById("title")
@@ -315,6 +317,13 @@ if (reportForm) {
                 const location =
                     document.getElementById("location")
                         .value.trim();
+
+
+                // Get selected county
+
+                const county =
+                    document.getElementById("county")
+                        .value;
 
 
                 const latitudeValue =
@@ -428,6 +437,7 @@ if (reportForm) {
                                 description: description,
                                 category: category,
                                 location: location,
+                                county: county,
                                 latitude: latitude,
                                 longitude: longitude,
                                 image_url: imageUrl

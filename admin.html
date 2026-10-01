@@ -9,415 +9,102 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css">
     <style>
-/* =========================================================
-   SMART COMMUNITY — CLEAN ADMIN DASHBOARD
-   Visual language: login page / glass / teal / green
-   ========================================================= */
-:root {
-    --admin-green: #08b889;
-    --admin-green-dark: #079b78;
-    --admin-teal: #063f4d;
-    --admin-ink: #17344a;
-    --admin-muted: #667b89;
-    --admin-border: #dfe9ee;
-    --admin-surface: rgba(255,255,255,.96);
-    --admin-soft: #f5f9fb;
-    --admin-shadow: 0 18px 45px rgba(4,28,39,.16);
-}
+    /* ============================================
+       ADMIN DASHBOARD - PROFESSIONAL BACKGROUND
+       ============================================ */
 
-body.admin-page {
-    margin: 0;
-    min-height: 100vh;
-    background:
-        linear-gradient(rgba(5, 29, 39, .78), rgba(5, 29, 39, .84)),
-        url("https://images.unsplash.com/photo-1494522358652-f30e61a60313?auto=format&fit=crop&w=2200&q=85")
-        center / cover fixed no-repeat;
-    color: var(--admin-ink);
-    font-family: Inter, "Segoe UI", Arial, sans-serif;
-}
+    body.admin-page {
+        background:
+            linear-gradient(
+                rgba(7, 30, 40, 0.82),
+                rgba(7, 30, 40, 0.82)
+            ),
+            url("https://images.unsplash.com/photo-1494522358652-f30e61a60313?auto=format&fit=crop&w=2200&q=85")
+            center center / cover fixed no-repeat !important;
+    }
 
-body.admin-page .admin-sidebar {
-    background: rgba(4, 55, 67, .94) !important;
-    border-right: 1px solid rgba(255,255,255,.10) !important;
-    box-shadow: 10px 0 35px rgba(0,0,0,.20) !important;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-}
+    /* Keep the dashboard content readable */
+    body.admin-page .admin-main {
+        background: transparent;
+    }
 
-body.admin-page .sidebar-brand {
-    border-bottom: 1px solid rgba(255,255,255,.10) !important;
-}
+    /* Slight glass effect on the top bar */
+    body.admin-page .admin-topbar {
+        background: rgba(255, 255, 255, 0.10);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+    }
 
-body.admin-page .sidebar-brand .brand-text strong,
-body.admin-page .sidebar-brand .brand-text span {
-    color: #fff !important;
-}
+    /* Make page headings readable over the background */
+    body.admin-page .admin-page-heading h1,
+    body.admin-page .admin-page-heading p {
+        color: white;
+    }
 
-body.admin-page .sidebar-brand .brand-text span {
-    opacity: .72;
-}
+    body.admin-page .admin-page-heading p {
+        opacity: 0.78;
+    }
+    /* ============================================
+   ADMIN DASHBOARD - TEXT READABILITY
+   ============================================ */
 
-body.admin-page .sidebar-link {
-    color: rgba(255,255,255,.84) !important;
-    border-radius: 14px !important;
-    transition: .2s ease;
-}
-
-body.admin-page .sidebar-link:hover {
-    background: rgba(255,255,255,.09) !important;
-    color: #fff !important;
-    transform: translateX(2px);
-}
-
-body.admin-page .sidebar-link.active {
-    background: linear-gradient(135deg, var(--admin-green), #10a67f) !important;
-    color: #fff !important;
-    box-shadow: 0 10px 25px rgba(8,184,137,.25);
-}
-
-body.admin-page .sidebar-logout:hover {
-    background: rgba(255,255,255,.09) !important;
-    color: #fff !important;
-}
-
-body.admin-page .admin-main {
-    background: transparent !important;
-}
-
-body.admin-page .admin-topbar {
-    background: rgba(5,35,45,.76) !important;
-    border-bottom: 1px solid rgba(255,255,255,.12) !important;
-    box-shadow: 0 8px 25px rgba(0,0,0,.12) !important;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-}
-
-body.admin-page .admin-topbar-title,
-body.admin-page .admin-topbar-title span,
-body.admin-page .admin-user-info strong,
-body.admin-page .admin-user-info span,
-body.admin-page .sidebar-toggle {
-    color: #fff !important;
-}
-
-body.admin-page .admin-user-info span {
-    opacity: .70;
-}
-
-body.admin-page .admin-avatar {
-    background: rgba(255,255,255,.94) !important;
-    color: #24516a !important;
-}
-
-body.admin-page .admin-content {
-    background: transparent !important;
-    padding: 28px;
-}
-
-/* Main sections are deliberately solid/light glass for readability. */
-body.admin-page .admin-section {
-    background: var(--admin-surface) !important;
-    color: var(--admin-ink) !important;
-    border: 1px solid rgba(255,255,255,.80) !important;
-    border-radius: 26px !important;
-    box-shadow: var(--admin-shadow) !important;
-    padding: 30px !important;
-    margin-bottom: 26px;
-}
-
-body.admin-page .admin-page-heading {
-    margin-bottom: 24px;
-}
-
-body.admin-page .admin-page-heading h1,
-body.admin-page .admin-section h1,
+/* Make section headings clear over the background */
 body.admin-page .admin-section h2,
-body.admin-page .admin-section h3,
-body.admin-page .admin-section h4 {
-    color: var(--admin-ink) !important;
-    text-shadow: none !important;
+body.admin-page .admin-section h3 {
+    color: #ffffff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.55);
 }
 
+/* Make section descriptions readable */
+body.admin-page .admin-section > p {
+    color: rgba(255, 255, 255, 0.92);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.65);
+}
+
+/* Make important links readable */
+body.admin-page .admin-section > a,
+body.admin-page .admin-section .view-all-link {
+    color: #7fffd4;
+    font-weight: 700;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.65);
+}
+
+/* Add a subtle glass layer behind dashboard overview text */
+body.admin-page #dashboardSection .section-intro,
+body.admin-page #dashboardSection .overview-text {
+    background: rgba(0, 0, 0, 0.18);
+    border-radius: 16px;
+    padding: 14px 18px;
+}
+
+/* Keep the main page headings very clear */
 body.admin-page .admin-page-heading h1 {
-    margin: 0 0 7px;
-    font-size: 34px;
-    font-weight: 800;
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
 }
 
-body.admin-page .admin-page-heading p,
-body.admin-page .admin-section p {
-    color: var(--admin-muted) !important;
-    text-shadow: none !important;
+body.admin-page .admin-page-heading p {
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+}
+/* Final readability fix for dashboard overview content */
+body.admin-page #dashboardSection h2,
+body.admin-page #dashboardSection h3,
+body.admin-page #dashboardSection p {
+    color: #ffffff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.65);
 }
 
-body.admin-page .stats-grid {
-    gap: 16px !important;
-    margin-bottom: 26px;
-}
-
-body.admin-page .stat-card {
-    background: linear-gradient(145deg, #fff, #f5fafc) !important;
-    border: 1px solid var(--admin-border) !important;
-    border-radius: 20px !important;
-    box-shadow: 0 10px 25px rgba(12,48,65,.09) !important;
-    color: var(--admin-ink) !important;
-    transition: .2s ease;
-}
-
-body.admin-page .stat-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(12,48,65,.14) !important;
-}
-
-body.admin-page .stat-content span {
-    color: #617685 !important;
-}
-
-body.admin-page .stat-content strong {
-    color: var(--admin-ink) !important;
-}
-
-body.admin-page .admin-dashboard-intro,
-body.admin-page .admin-dashboard-recent,
-body.admin-page .map-info-card,
-body.admin-page .feature-placeholder {
-    background: var(--admin-soft) !important;
-    color: var(--admin-ink) !important;
-    border: 1px solid var(--admin-border) !important;
-    border-radius: 20px !important;
-    box-shadow: none !important;
-}
-
-body.admin-page .admin-dashboard-intro {
-    padding: 24px !important;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    margin-bottom: 22px;
-}
-
-body.admin-page .admin-dashboard-intro h2,
-body.admin-page .admin-dashboard-recent h2,
-body.admin-page .section-heading h2,
-body.admin-page .admin-section-heading h2 {
-    color: var(--admin-ink) !important;
-}
-
-body.admin-page .admin-dashboard-recent {
-    padding: 24px !important;
-}
-
-body.admin-page .admin-primary-action,
-body.admin-page .admin-btn-primary,
-body.admin-page .primary-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px !important;
+body.admin-page #dashboardSection a {
+    color: #7fffd4 !important;
     font-weight: 700;
-    background: linear-gradient(135deg, var(--admin-green), #10a67f) !important;
-    color: #fff !important;
-    border: 0 !important;
-    box-shadow: 0 8px 20px rgba(8,184,137,.22) !important;
-    text-decoration: none;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
 }
 
-body.admin-page .admin-secondary-action {
-    background: #fff !important;
-    color: var(--admin-ink) !important;
-    border: 1px solid #d7e2e8 !important;
-    border-radius: 12px !important;
-}
-
-body.admin-page .admin-toolbar {
-    background: #f7fafb !important;
-    border: 1px solid var(--admin-border) !important;
-    border-radius: 18px !important;
-    box-shadow: none !important;
-}
-
-body.admin-page .admin-toolbar input,
-body.admin-page .admin-toolbar select,
-body.admin-page #settingsSection select {
-    background: #fff !important;
-    color: var(--admin-ink) !important;
-    border: 1px solid #d8e3e9 !important;
-}
-
-body.admin-page .search-box {
-    background: #fff !important;
-    border: 1px solid #d8e3e9 !important;
-    border-radius: 12px !important;
-}
-
-body.admin-page .search-box input {
-    border: 0 !important;
-    box-shadow: none !important;
-    color: var(--admin-ink) !important;
-}
-
-body.admin-page #adminReports {
-    margin-top: 18px;
-}
-
-body.admin-page .report-card {
-    background: #fff !important;
-    color: var(--admin-ink) !important;
-    border: 1px solid var(--admin-border) !important;
-    border-radius: 20px !important;
-    box-shadow: 0 10px 28px rgba(12,48,65,.08) !important;
-}
-
-body.admin-page .report-card h1,
-body.admin-page .report-card h2,
-body.admin-page .report-card h3,
-body.admin-page .report-card h4,
-body.admin-page .report-card p,
-body.admin-page .report-card span {
-    color: var(--admin-ink) !important;
-    text-shadow: none !important;
-}
-
-body.admin-page #adminMap {
-    min-height: 520px;
-    border-radius: 20px !important;
-    overflow: hidden;
-    box-shadow: 0 12px 28px rgba(12,48,65,.12) !important;
-}
-
-body.admin-page .map-info-card {
-    display: flex;
-    gap: 15px;
-    padding: 20px !important;
-    margin-bottom: 18px;
-}
-
-body.admin-page .map-info-card h3 {
-    margin: 0 0 4px;
-}
-
-body.admin-page .map-info-card p {
-    margin: 0;
-}
-
-body.admin-page .feature-placeholder {
-    padding: 42px 28px !important;
-    text-align: center;
-}
-
-body.admin-page .feature-placeholder h2 {
-    margin: 10px 0 8px;
-}
-
-body.admin-page .feature-status {
-    display: inline-block;
-    margin-top: 14px;
-    padding: 8px 14px;
-    border-radius: 999px;
-    background: #e8f8f3;
-    color: #087e64;
-    font-weight: 700;
-}
-
-/* Settings cards */
-body.admin-page .settings-card,
-body.admin-page .settings-section {
-    background: #fff !important;
-    color: var(--admin-ink) !important;
-    border: 1px solid var(--admin-border) !important;
-    border-radius: 20px !important;
-    box-shadow: 0 10px 25px rgba(12,48,65,.07) !important;
-}
-
-body.admin-page #settingsSection h2,
-body.admin-page #settingsSection h3,
-body.admin-page #settingsSection strong,
-body.admin-page #settingsSection label {
-    color: var(--admin-ink) !important;
-    text-shadow: none !important;
-}
-
-body.admin-page #settingsSection p,
-body.admin-page #settingsSection .setting-item span {
-    color: var(--admin-muted) !important;
-    text-shadow: none !important;
-}
-
-body.admin-page #settingsSection input[type="checkbox"] {
-    accent-color: var(--admin-green);
-}
-
-body.admin-page .admin-loading {
-    color: var(--admin-muted) !important;
-}
-
-/* Existing dark-mode setting remains functional and readable. */
-body.admin-page.admin-dark-theme .admin-section {
-    background: rgba(13,35,45,.97) !important;
-    color: #fff !important;
-    border-color: rgba(255,255,255,.08) !important;
-}
-
-body.admin-page.admin-dark-theme .admin-section h1,
-body.admin-page.admin-dark-theme .admin-section h2,
-body.admin-page.admin-dark-theme .admin-section h3,
-body.admin-page.admin-dark-theme .admin-section h4,
-body.admin-page.admin-dark-theme .admin-section strong {
-    color: #fff !important;
-}
-
-body.admin-page.admin-dark-theme .admin-section p,
-body.admin-page.admin-dark-theme .admin-section .setting-item span {
-    color: rgba(255,255,255,.72) !important;
-}
-
-body.admin-page.admin-dark-theme .admin-dashboard-intro,
-body.admin-page.admin-dark-theme .admin-dashboard-recent,
-body.admin-page.admin-dark-theme .map-info-card,
-body.admin-page.admin-dark-theme .feature-placeholder,
-body.admin-page.admin-dark-theme .report-card,
-body.admin-page.admin-dark-theme .settings-card,
-body.admin-page.admin-dark-theme .settings-section {
-    background: rgba(255,255,255,.07) !important;
-    border-color: rgba(255,255,255,.10) !important;
-}
-
-body.admin-page.admin-dark-theme .report-card h1,
-body.admin-page.admin-dark-theme .report-card h2,
-body.admin-page.admin-dark-theme .report-card h3,
-body.admin-page.admin-dark-theme .report-card h4,
-body.admin-page.admin-dark-theme .report-card p,
-body.admin-page.admin-dark-theme .report-card span,
-body.admin-page.admin-dark-theme #settingsSection h2,
-body.admin-page.admin-dark-theme #settingsSection h3,
-body.admin-page.admin-dark-theme #settingsSection strong,
-body.admin-page.admin-dark-theme #settingsSection label {
-    color: #fff !important;
-}
-
-body.admin-page.admin-dark-theme .admin-toolbar {
-    background: rgba(255,255,255,.06) !important;
-    border-color: rgba(255,255,255,.10) !important;
-}
-
-body.admin-page.admin-dark-theme .admin-toolbar input,
-body.admin-page.admin-dark-theme .admin-toolbar select,
-body.admin-page.admin-dark-theme #settingsSection select {
-    background: rgba(255,255,255,.10) !important;
-    color: #fff !important;
-    border-color: rgba(255,255,255,.16) !important;
-}
-
-@media (max-width: 900px) {
-    body.admin-page .admin-content { padding: 18px; }
-    body.admin-page .admin-section { padding: 20px !important; border-radius: 22px !important; }
-    body.admin-page .admin-dashboard-intro { align-items: flex-start; flex-direction: column; }
-}
-
-@media (max-width: 768px) {
-    body.admin-page .admin-page-heading h1 { font-size: 28px; }
-    body.admin-page .stat-card { border-radius: 17px !important; }
+/* Improve administrator information in the top bar */
+body.admin-page .admin-topbar * {
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
 }
 </style>
 
@@ -426,6 +113,26 @@ body.admin-page.admin-dark-theme #settingsSection select {
         rel="stylesheet"
         href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     >
+
+<style>
+body.admin-page #organizationsSection .admin-page-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+body.admin-page #organizationsSection .feature-placeholder {
+    margin-top: 24px;
+}
+
+@media (max-width: 768px) {
+    body.admin-page #organizationsSection .admin-page-heading {
+        flex-direction: column;
+    }
+}
+</style>
+
 </head>
 
 <body class="admin-page">
@@ -482,6 +189,15 @@ body.admin-page.admin-dark-theme #settingsSection select {
             >
                 <span class="sidebar-icon">👥</span>
                 <span>Residents</span>
+            </a>
+
+            <a
+                href="#organizationsSection"
+                class="sidebar-link"
+                data-section="organizationsSection"
+            >
+                <span class="sidebar-icon">🏢</span>
+                <span>Organizations</span>
             </a>
 
             <a
@@ -889,6 +605,374 @@ body.admin-page.admin-dark-theme #settingsSection select {
 
 
             <!-- =====================================================
+                 ORGANIZATIONS SECTION
+            ====================================================== -->
+            <section
+                id="organizationsSection"
+                class="admin-section"
+            >
+
+                <div class="admin-page-heading">
+
+                    <div>
+                        <h1>Organizations</h1>
+
+                        <p>
+                            Manage official organizations responsible for
+                            community services and problem resolution.
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="admin-primary-action"
+                        id="addOrganizationBtn"
+                    >
+                        + Add Organization
+                    </button>
+
+                </div>
+
+                <div class="organization-form-card">
+
+    <div class="organization-form-header">
+        <div>
+            <p class="section-eyebrow">ORGANIZATION DETAILS</p>
+            <h2>Add New Organization</h2>
+            <p>
+                Enter the official details of an organization that
+                handles community services and reported problems.
+            </p>
+        </div>
+    </div>
+
+    <form id="organizationForm">
+
+        <div class="organization-form-grid">
+
+            <div class="form-group">
+                <label for="organizationName">
+                    Organization Name *
+                </label>
+                <input
+                    type="text"
+                    id="organizationName"
+                    placeholder="e.g. Kenya Power"
+                    required
+                >
+            </div>
+
+           <div class="form-group">
+    <label for="organizationType">
+        Organization Type *
+    </label>
+
+    <select id="organizationType" required>
+        <option value="">Select type</option>
+
+        <option value="Electricity">
+            Electricity
+        </option>
+
+        <option value="Water">
+            Water
+        </option>
+
+        <option value="Waste Management">
+            Waste Management
+        </option>
+
+        <option value="Security">
+            Security
+        </option>
+
+        <option value="Roads">
+            Roads
+        </option>
+
+        <option value="Drainage">
+            Drainage
+        </option>
+
+        <option value="Environment">
+            Environment
+        </option>
+
+        <option value="Street Lighting">
+            Street Lighting
+        </option>
+
+        <option value="Other">
+            Other
+        </option>
+    </select>
+</div>
+
+
+<div class="form-group">
+
+    <label for="organizationCounty">
+        County *
+    </label>
+
+    <select
+        id="organizationCounty"
+        required
+    >
+
+        <option value="">
+            Select county
+        </option>
+
+        <option value="Baringo">Baringo</option>
+        <option value="Bomet">Bomet</option>
+        <option value="Bungoma">Bungoma</option>
+        <option value="Busia">Busia</option>
+        <option value="Elgeyo-Marakwet">Elgeyo-Marakwet</option>
+        <option value="Embu">Embu</option>
+        <option value="Garissa">Garissa</option>
+        <option value="Homa Bay">Homa Bay</option>
+        <option value="Isiolo">Isiolo</option>
+        <option value="Kajiado">Kajiado</option>
+        <option value="Kakamega">Kakamega</option>
+        <option value="Kericho">Kericho</option>
+        <option value="Kiambu">Kiambu</option>
+        <option value="Kilifi">Kilifi</option>
+        <option value="Kirinyaga">Kirinyaga</option>
+        <option value="Kisii">Kisii</option>
+        <option value="Kisumu">Kisumu</option>
+        <option value="Kitui">Kitui</option>
+        <option value="Kwale">Kwale</option>
+        <option value="Laikipia">Laikipia</option>
+        <option value="Lamu">Lamu</option>
+        <option value="Machakos">Machakos</option>
+        <option value="Makueni">Makueni</option>
+        <option value="Mandera">Mandera</option>
+        <option value="Marsabit">Marsabit</option>
+        <option value="Meru">Meru</option>
+        <option value="Migori">Migori</option>
+        <option value="Mombasa">Mombasa</option>
+        <option value="Murang'a">Murang'a</option>
+        <option value="Nairobi">Nairobi</option>
+        <option value="Nakuru">Nakuru</option>
+        <option value="Nandi">Nandi</option>
+        <option value="Narok">Narok</option>
+        <option value="Nyamira">Nyamira</option>
+        <option value="Nyandarua">Nyandarua</option>
+        <option value="Nyeri">Nyeri</option>
+        <option value="Samburu">Samburu</option>
+        <option value="Siaya">Siaya</option>
+        <option value="Taita-Taveta">Taita-Taveta</option>
+        <option value="Tana River">Tana River</option>
+        <option value="Tharaka-Nithi">Tharaka-Nithi</option>
+        <option value="Trans Nzoia">Trans Nzoia</option>
+        <option value="Turkana">Turkana</option>
+        <option value="Uasin Gishu">Uasin Gishu</option>
+        <option value="Vihiga">Vihiga</option>
+        <option value="Wajir">Wajir</option>
+        <option value="West Pokot">West Pokot</option>
+
+    </select>
+
+</div>
+<div
+    class="form-group"
+    style="display:flex; align-items:flex-end;"
+>
+
+    <button
+        type="button"
+        id="findOrganizationBtn"
+        class="admin-primary-action"
+        style="width:100%;"
+    >
+        🔎 Find Organization
+    </button>
+
+</div>
+
+            <div class="form-group">
+                <label for="organizationDepartment">
+                    Department / Service Unit
+                </label>
+                <input
+                    type="text"
+                    id="organizationDepartment"
+                    placeholder="e.g. Customer Service Department"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="organizationPhone">
+                    Official Phone
+                </label>
+                <input
+                    type="tel"
+                    id="organizationPhone"
+                    placeholder="Official organization phone"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="organizationEmail">
+                    Official Email
+                </label>
+                <input
+                    type="email"
+                    id="organizationEmail"
+                    placeholder="organization@example.com"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="organizationWebsite">
+                    Official Website
+                </label>
+                <input
+                    type="url"
+                    id="organizationWebsite"
+                    placeholder="https://example.com"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="organizationSocial">
+                    Social Media / Contact Handle
+                </label>
+                <input
+                    type="text"
+                    id="organizationSocial"
+                    placeholder="@organization"
+                >
+            </div>
+
+            <div class="form-group">
+    <label for="organizationServiceArea">
+        Service Area
+    </label>
+    <input
+        type="text"
+        id="organizationServiceArea"
+        placeholder="e.g. Nairobi Metropolitan Area"
+    >
+</div>
+
+<div class="form-group">
+    <label for="organizationCounties">
+        Counties Served
+    </label>
+    <input
+        type="text"
+        id="organizationCounties"
+        placeholder="e.g. Nairobi, Kiambu, Machakos"
+    >
+    <small style="color:#667085;">
+        Enter all counties served by this organization, separated by commas.
+    </small>
+</div>
+
+            <div class="form-group full-width">
+                <label for="organizationAddress">
+                    Physical Address
+                </label>
+                <input
+                    type="text"
+                    id="organizationAddress"
+                    placeholder="Official physical address"
+                >
+            </div>
+
+            <div class="form-group full-width">
+                <label for="organizationServices">
+                    Services / Problems Handled
+                </label>
+                <textarea
+                    id="organizationServices"
+                    rows="3"
+                    placeholder="Describe the community problems or services handled by this organization"
+                ></textarea>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="organizationNotes">
+                    Additional Notes
+                </label>
+                <textarea
+                    id="organizationNotes"
+                    rows="3"
+                    placeholder="Additional information about the organization"
+                ></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="organizationStatus">
+                    Status
+                </label>
+                <select id="organizationStatus">
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div
+            id="organizationMessage"
+            class="organization-message"
+        ></div>
+
+        <div class="organization-form-actions">
+
+            <button
+                type="submit"
+                class="admin-primary-action"
+                id="saveOrganizationBtn"
+            >
+                Save Organization
+            </button>
+
+            <button
+                type="button"
+                class="admin-secondary-action"
+                id="clearOrganizationBtn"
+            >
+                Clear Form
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+<div class="organization-directory-card">
+
+    <div class="admin-page-heading">
+        <div>
+            <p class="section-eyebrow">DIRECTORY</p>
+            <h2>Organization Directory</h2>
+            <p>
+                Organizations currently registered in the
+                Smart Community system.
+            </p>
+        </div>
+    </div>
+
+    <div
+        id="organizationsList"
+        class="organizations-list"
+    >
+        <div class="recent-loading">
+            Loading organizations...
+        </div>
+    </div>
+
+</div>
+
+            </section>
+
+
+            <!-- =====================================================
                  SETTINGS SECTION
             ====================================================== -->
             <section
@@ -1255,6 +1339,1056 @@ body.admin-page.admin-dark-theme #settingsSection select {
     <script src="js/supabase.js"></script>
     <script src="js/admin.js"></script>
     <script src="js/admin-settings.js"></script>
+   <script>
+/* =========================================================
+   ORGANIZATION MANAGEMENT
+   CREATE + EDIT + DELETE
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const organizationForm =
+        document.getElementById("organizationForm");
+
+    const clearOrganizationBtn =
+        document.getElementById("clearOrganizationBtn");
+
+    const addOrganizationBtn =
+        document.getElementById("addOrganizationBtn");
+
+    const organizationMessage =
+        document.getElementById("organizationMessage");
+
+    const organizationsList =
+        document.getElementById("organizationsList");
+
+    const saveOrganizationBtn =
+        document.getElementById("saveOrganizationBtn");
+
+
+    /* ---------------------------------------------------------
+       EDIT MODE
+    --------------------------------------------------------- */
+
+    let editingOrganizationId = null;
+
+
+    /* ---------------------------------------------------------
+       MESSAGE
+    --------------------------------------------------------- */
+
+    function showOrganizationMessage(message, type) {
+
+        if (!organizationMessage) return;
+
+        organizationMessage.textContent = message;
+
+        organizationMessage.className =
+            "organization-message " + type;
+
+    }
+
+
+    /* ---------------------------------------------------------
+       ESCAPE HTML
+    --------------------------------------------------------- */
+
+    function escapeOrganizationHTML(value) {
+
+        if (value === null || value === undefined) {
+            return "";
+        }
+
+        return String(value)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+
+    }
+
+
+    /* ---------------------------------------------------------
+       CLEAR FORM
+    --------------------------------------------------------- */
+
+    function clearOrganizationForm() {
+
+        if (!organizationForm) return;
+
+        organizationForm.reset();
+
+        editingOrganizationId = null;
+
+        const status =
+            document.getElementById("organizationStatus");
+
+        if (status) {
+            status.value = "Active";
+        }
+
+        if (saveOrganizationBtn) {
+            saveOrganizationBtn.textContent =
+                "Save Organization";
+        }
+
+        if (organizationMessage) {
+            organizationMessage.textContent = "";
+
+            organizationMessage.className =
+                "organization-message";
+        }
+
+    }
+
+
+    /* ---------------------------------------------------------
+       LOAD ORGANIZATIONS
+    --------------------------------------------------------- */
+
+    async function loadOrganizations() {
+
+        if (!organizationsList) return;
+
+        organizationsList.innerHTML = `
+            <div class="organization-empty">
+                Loading organizations...
+            </div>
+        `;
+
+        try {
+
+            const {
+                data,
+                error
+            } = await supabaseClient
+                .from("organizations")
+                .select("*")
+                .order("created_at", {
+                    ascending: false
+                });
+
+
+            if (error) {
+                throw error;
+            }
+
+
+            if (!data || data.length === 0) {
+
+                organizationsList.innerHTML = `
+                    <div class="organization-empty">
+                        <strong>No organizations yet.</strong>
+                        <br>
+                        Add the first organization using
+                        the form above.
+                    </div>
+                `;
+
+                return;
+            }
+
+
+            organizationsList.innerHTML =
+                data.map(function (organization) {
+
+                    const website =
+                        organization.website
+                            ? `
+                                <div class="organization-detail">
+                                    <strong>Website:</strong>
+                                    <a
+                                        href="${escapeOrganizationHTML(
+                                            organization.website
+                                        )}"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        ${escapeOrganizationHTML(
+                                            organization.website
+                                        )}
+                                    </a>
+                                </div>
+                            `
+                            : "";
+
+
+                    const socialHandle =
+                        organization.social_handle
+                            ? `
+                                <div class="organization-detail">
+                                    <strong>Social:</strong>
+                                    ${escapeOrganizationHTML(
+                                        organization.social_handle
+                                    )}
+                                </div>
+                            `
+                            : "";
+
+
+                    const notes =
+                        organization.notes
+                            ? `
+                                <div class="organization-detail">
+                                    <strong>Notes:</strong>
+                                    ${escapeOrganizationHTML(
+                                        organization.notes
+                                    )}
+                                </div>
+                            `
+                            : "";
+
+
+                    return `
+                        <div class="organization-card">
+
+                            <div class="organization-card-header">
+
+                                <div>
+
+                                    <h3>
+                                        ${escapeOrganizationHTML(
+                                            organization.name
+                                        )}
+                                    </h3>
+
+                                    <div class="organization-type">
+                                        ${escapeOrganizationHTML(
+                                            organization.type
+                                        )}
+                                    </div>
+
+                                </div>
+
+                                <span
+                                    class="organization-status ${
+                                        organization.status === "Active"
+                                            ? "active"
+                                            : "inactive"
+                                    }"
+                                >
+                                    ${escapeOrganizationHTML(
+                                        organization.status
+                                    )}
+                                </span>
+
+                            </div>
+
+
+                            <div class="organization-card-details">
+
+                                ${
+                                    organization.department
+                                        ? `
+                                            <div class="organization-detail">
+                                                <strong>Department:</strong>
+                                                ${escapeOrganizationHTML(
+                                                    organization.department
+                                                )}
+                                            </div>
+                                        `
+                                        : ""
+                                }
+
+
+                                ${
+                                    organization.phone
+                                        ? `
+                                            <div class="organization-detail">
+                                                <strong>Phone:</strong>
+                                                ${escapeOrganizationHTML(
+                                                    organization.phone
+                                                )}
+                                            </div>
+                                        `
+                                        : ""
+                                }
+
+
+                                ${
+                                    organization.email
+                                        ? `
+                                            <div class="organization-detail">
+                                                <strong>Email:</strong>
+                                                ${escapeOrganizationHTML(
+                                                    organization.email
+                                                )}
+                                            </div>
+                                        `
+                                        : ""
+                                }
+
+
+                                ${website}
+
+
+                                ${socialHandle}
+
+
+                                ${
+                                    organization.service_area
+                                        ? `
+                                            <div class="organization-detail">
+                                                <strong>Service Area:</strong>
+                                                ${escapeOrganizationHTML(
+                                                    organization.service_area
+                                                )}
+                                            </div>
+                                        `
+                                        : ""
+                                }
+
+
+                                ${
+                                    organization.counties
+                                        ? `
+                                            <div class="organization-detail">
+                                                <strong>Counties Served:</strong>
+                                                ${escapeOrganizationHTML(
+                                                    organization.counties
+                                                )}
+                                            </div>
+                                        `
+                                        : ""
+                                }
+
+
+                                ${
+                                    organization.address
+                                        ? `
+                                            <div class="organization-detail">
+                                                <strong>Address:</strong>
+                                                ${escapeOrganizationHTML(
+                                                    organization.address
+                                                )}
+                                            </div>
+                                        `
+                                        : ""
+                                }
+
+
+                                ${
+                                    organization.services
+                                        ? `
+                                            <div class="organization-detail">
+                                                <strong>Services:</strong>
+                                                ${escapeOrganizationHTML(
+                                                    organization.services
+                                                )}
+                                            </div>
+                                        `
+                                        : ""
+                                }
+
+
+                                ${notes}
+
+                            </div>
+
+
+                            <!-- ORGANIZATION ACTIONS -->
+
+                            <div class="organization-card-actions">
+
+                                <button
+                                    type="button"
+                                    class="organization-edit-btn"
+                                    data-id="${organization.id}"
+                                >
+                                    ✏️ Edit
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="organization-delete-btn"
+                                    data-id="${organization.id}"
+                                >
+                                    🗑️ Delete
+                                </button>
+
+                            </div>
+
+                        </div>
+                    `;
+
+                }).join("");
+
+
+            /* -----------------------------------------------------
+               EDIT BUTTONS
+            ----------------------------------------------------- */
+
+            document
+                .querySelectorAll(".organization-edit-btn")
+                .forEach(function (button) {
+
+                    button.addEventListener(
+                        "click",
+                        function () {
+
+                            const organizationId =
+                                this.getAttribute("data-id");
+
+                            editOrganization(
+                                organizationId,
+                                data
+                            );
+
+                        }
+                    );
+
+                });
+
+
+            /* -----------------------------------------------------
+               DELETE BUTTONS
+            ----------------------------------------------------- */
+
+            document
+                .querySelectorAll(".organization-delete-btn")
+                .forEach(function (button) {
+
+                    button.addEventListener(
+                        "click",
+                        function () {
+
+                            const organizationId =
+                                this.getAttribute("data-id");
+
+                            deleteOrganization(
+                                organizationId,
+                                data
+                            );
+
+                        }
+                    );
+
+                });
+
+
+        } catch (error) {
+
+            console.error(
+                "Error loading organizations:",
+                error
+            );
+
+            organizationsList.innerHTML = `
+                <div class="organization-empty">
+                    Unable to load organizations.
+                    Please refresh the page and try again.
+                </div>
+            `;
+
+        }
+
+    }
+
+
+    /* ---------------------------------------------------------
+       EDIT ORGANIZATION
+    --------------------------------------------------------- */
+
+    function editOrganization(
+        organizationId,
+        organizations
+    ) {
+
+        const organization =
+            organizations.find(function (item) {
+
+                return String(item.id) ===
+                    String(organizationId);
+
+            });
+
+
+        if (!organization) {
+
+            showOrganizationMessage(
+                "Organization could not be found.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        editingOrganizationId =
+            organization.id;
+
+
+        document.getElementById(
+            "organizationName"
+        ).value =
+            organization.name || "";
+
+
+        document.getElementById(
+            "organizationType"
+        ).value =
+            organization.type || "";
+
+
+        document.getElementById(
+            "organizationCounty"
+        ).value =
+            "";
+
+
+        document.getElementById(
+            "organizationDepartment"
+        ).value =
+            organization.department || "";
+
+
+        document.getElementById(
+            "organizationPhone"
+        ).value =
+            organization.phone || "";
+
+
+        document.getElementById(
+            "organizationEmail"
+        ).value =
+            organization.email || "";
+
+
+        document.getElementById(
+            "organizationWebsite"
+        ).value =
+            organization.website || "";
+
+
+        document.getElementById(
+            "organizationSocial"
+        ).value =
+            organization.social_handle || "";
+
+
+        document.getElementById(
+            "organizationServiceArea"
+        ).value =
+            organization.service_area || "";
+
+
+        document.getElementById(
+            "organizationCounties"
+        ).value =
+            organization.counties || "";
+
+
+        document.getElementById(
+            "organizationAddress"
+        ).value =
+            organization.address || "";
+
+
+        document.getElementById(
+            "organizationServices"
+        ).value =
+            organization.services || "";
+
+
+        document.getElementById(
+            "organizationNotes"
+        ).value =
+            organization.notes || "";
+
+
+        document.getElementById(
+            "organizationStatus"
+        ).value =
+            organization.status || "Active";
+
+
+        if (saveOrganizationBtn) {
+
+            saveOrganizationBtn.textContent =
+                "Update Organization";
+
+        }
+
+
+        showOrganizationMessage(
+            "Editing organization. Make your changes and click Update Organization.",
+            "success"
+        );
+
+
+        const formCard =
+            document.querySelector(
+                ".organization-form-card"
+            );
+
+
+        if (formCard) {
+
+            formCard.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+
+
+        const nameInput =
+            document.getElementById(
+                "organizationName"
+            );
+
+
+        if (nameInput) {
+
+            setTimeout(function () {
+
+                nameInput.focus();
+
+            }, 400);
+
+        }
+
+    }
+
+
+    /* ---------------------------------------------------------
+       DELETE ORGANIZATION
+    --------------------------------------------------------- */
+
+    async function deleteOrganization(
+        organizationId,
+        organizations
+    ) {
+
+        const organization =
+            organizations.find(function (item) {
+
+                return String(item.id) ===
+                    String(organizationId);
+
+            });
+
+
+        if (!organization) {
+
+            showOrganizationMessage(
+                "Organization could not be found.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        const confirmed =
+            window.confirm(
+                "Are you sure you want to delete " +
+                organization.name +
+                "?\n\nThis action cannot be undone."
+            );
+
+
+        if (!confirmed) {
+
+            return;
+
+        }
+
+
+        try {
+
+            const {
+                error
+            } = await supabaseClient
+                .from("organizations")
+                .delete()
+                .eq("id", organizationId);
+
+
+            if (error) {
+
+                throw error;
+
+            }
+
+
+            showOrganizationMessage(
+                "Organization deleted successfully.",
+                "success"
+            );
+
+
+            if (
+                String(editingOrganizationId) ===
+                String(organizationId)
+            ) {
+
+                clearOrganizationForm();
+
+            }
+
+
+            await loadOrganizations();
+
+
+        } catch (error) {
+
+            console.error(
+                "Organization delete error:",
+                error
+            );
+
+
+            showOrganizationMessage(
+                error.message ||
+                "Unable to delete organization.",
+                "error"
+            );
+
+        }
+
+    }
+
+
+    /* ---------------------------------------------------------
+       SAVE / UPDATE ORGANIZATION
+    --------------------------------------------------------- */
+
+    if (organizationForm) {
+
+        organizationForm.addEventListener(
+            "submit",
+            async function (event) {
+
+                event.preventDefault();
+
+
+                const organization = {
+
+                    name:
+                        document
+                            .getElementById(
+                                "organizationName"
+                            )
+                            .value
+                            .trim(),
+
+                    type:
+                        document
+                            .getElementById(
+                                "organizationType"
+                            )
+                            .value,
+
+                    department:
+                        document
+                            .getElementById(
+                                "organizationDepartment"
+                            )
+                            .value
+                            .trim(),
+
+                    phone:
+                        document
+                            .getElementById(
+                                "organizationPhone"
+                            )
+                            .value
+                            .trim(),
+
+                    email:
+                        document
+                            .getElementById(
+                                "organizationEmail"
+                            )
+                            .value
+                            .trim(),
+
+                    website:
+                        document
+                            .getElementById(
+                                "organizationWebsite"
+                            )
+                            .value
+                            .trim(),
+
+                    social_handle:
+                        document
+                            .getElementById(
+                                "organizationSocial"
+                            )
+                            .value
+                            .trim(),
+
+                    address:
+                        document
+                            .getElementById(
+                                "organizationAddress"
+                            )
+                            .value
+                            .trim(),
+
+                    service_area:
+                        document
+                            .getElementById(
+                                "organizationServiceArea"
+                            )
+                            .value
+                            .trim(),
+
+                    counties:
+                        document
+                            .getElementById(
+                                "organizationCounties"
+                            )
+                            .value
+                            .trim(),
+
+                    services:
+                        document
+                            .getElementById(
+                                "organizationServices"
+                            )
+                            .value
+                            .trim(),
+
+                    notes:
+                        document
+                            .getElementById(
+                                "organizationNotes"
+                            )
+                            .value
+                            .trim(),
+
+                    status:
+                        document
+                            .getElementById(
+                                "organizationStatus"
+                            )
+                            .value
+
+                };
+
+
+                if (
+                    !organization.name ||
+                    !organization.type
+                ) {
+
+                    showOrganizationMessage(
+                        "Organization name and type are required.",
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                if (saveOrganizationBtn) {
+
+                    saveOrganizationBtn.disabled = true;
+
+                    saveOrganizationBtn.textContent =
+                        editingOrganizationId
+                            ? "Updating..."
+                            : "Saving...";
+
+                }
+
+
+                try {
+
+                    /* -------------------------------------------------
+                       UPDATE EXISTING ORGANIZATION
+                    ------------------------------------------------- */
+
+                    if (editingOrganizationId) {
+
+                        const {
+                            data,
+                            error
+                        } = await supabaseClient
+                            .from("organizations")
+                            .update(organization)
+                            .eq(
+                                "id",
+                                editingOrganizationId
+                            )
+                            .select();
+
+
+                        if (error) {
+
+                            throw error;
+
+                        }
+
+
+                        console.log(
+                            "Organization updated:",
+                            data
+                        );
+
+
+                        showOrganizationMessage(
+                            "Organization updated successfully.",
+                            "success"
+                        );
+
+                    }
+
+
+                    /* -------------------------------------------------
+                       CREATE NEW ORGANIZATION
+                    ------------------------------------------------- */
+
+                    else {
+
+                        const {
+                            data,
+                            error
+                        } = await supabaseClient
+                            .from("organizations")
+                            .insert([organization])
+                            .select();
+
+
+                        if (error) {
+
+                            throw error;
+
+                        }
+
+
+                        console.log(
+                            "Organization created:",
+                            data
+                        );
+
+
+                        showOrganizationMessage(
+                            "Organization saved successfully.",
+                            "success"
+                        );
+
+                    }
+
+
+                    clearOrganizationForm();
+
+                    await loadOrganizations();
+
+
+                } catch (error) {
+
+                    console.error(
+                        "Organization save/update error:",
+                        error
+                    );
+
+
+                    showOrganizationMessage(
+                        error.message ||
+                        "Unable to save organization.",
+                        "error"
+                    );
+
+                } finally {
+
+                    if (saveOrganizationBtn) {
+
+                        saveOrganizationBtn.disabled = false;
+
+                        saveOrganizationBtn.textContent =
+                            "Save Organization";
+
+                    }
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* ---------------------------------------------------------
+       CLEAR FORM
+    --------------------------------------------------------- */
+
+    if (clearOrganizationBtn) {
+
+        clearOrganizationBtn.addEventListener(
+            "click",
+            clearOrganizationForm
+        );
+
+    }
+
+
+    /* ---------------------------------------------------------
+       ADD ORGANIZATION BUTTON
+    --------------------------------------------------------- */
+
+    if (addOrganizationBtn) {
+
+        addOrganizationBtn.addEventListener(
+            "click",
+            function () {
+
+                clearOrganizationForm();
+
+
+                const formCard =
+                    document.querySelector(
+                        ".organization-form-card"
+                    );
+
+
+                if (formCard) {
+
+                    formCard.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                }
+
+
+                const nameInput =
+                    document.getElementById(
+                        "organizationName"
+                    );
+
+
+                if (nameInput) {
+
+                    setTimeout(function () {
+
+                        nameInput.focus();
+
+                    }, 400);
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* ---------------------------------------------------------
+       INITIAL LOAD
+    --------------------------------------------------------- */
+
+    loadOrganizations();
+
+});
+</script>
 
 
     <!-- =========================
@@ -1501,6 +2635,627 @@ body.admin-page.admin-dark-theme #settingsSection select {
         });
 
     </script>
+<style>
+/* =========================================================
+   SMART COMMUNITY ADMIN DASHBOARD
+   MODERN GLASS / LOGIN-PAGE DESIGN
+   ========================================================= */
 
+/* ---------- MAIN BACKGROUND ---------- */
+
+body.admin-page {
+    background:
+        linear-gradient(
+            rgba(5, 28, 38, 0.78),
+            rgba(5, 28, 38, 0.84)
+        ),
+        url("https://images.unsplash.com/photo-1494522358652-f30e61a60313?auto=format&fit=crop&w=2200&q=85")
+        center center / cover fixed no-repeat !important;
+
+    color: #ffffff;
+}
+
+/* ---------- SIDEBAR ---------- */
+
+body.admin-page .admin-sidebar {
+    background: rgba(4, 43, 55, 0.78) !important;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 8px 0 30px rgba(0, 0, 0, 0.18);
+}
+
+/* Sidebar brand */
+
+body.admin-page .sidebar-brand {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+body.admin-page .sidebar-brand-text,
+body.admin-page .sidebar-brand-text strong {
+    color: #ffffff !important;
+}
+
+body.admin-page .sidebar-brand-text small {
+    color: rgba(255, 255, 255, 0.72) !important;
+}
+
+/* Sidebar navigation */
+
+body.admin-page .sidebar-link {
+    color: rgba(255, 255, 255, 0.82) !important;
+    border-radius: 14px;
+    margin: 5px 12px;
+    transition: all 0.25s ease;
+}
+
+body.admin-page .sidebar-link:hover {
+    background: rgba(255, 255, 255, 0.10) !important;
+    color: #ffffff !important;
+    transform: translateX(3px);
+}
+
+body.admin-page .sidebar-link.active {
+    background: linear-gradient(
+        135deg,
+        #0bbf91,
+        #11a982
+    ) !important;
+
+    color: #ffffff !important;
+    box-shadow: 0 8px 20px rgba(0, 191, 145, 0.25);
+}
+
+/* Logout */
+
+body.admin-page .sidebar-logout {
+    color: rgba(255, 255, 255, 0.82) !important;
+    border-radius: 14px;
+}
+
+body.admin-page .sidebar-logout:hover {
+    background: rgba(255, 255, 255, 0.10) !important;
+    color: #ffffff !important;
+}
+
+/* ---------- MAIN CONTENT ---------- */
+
+body.admin-page .admin-main {
+    background: transparent !important;
+}
+
+/* ---------- TOP BAR ---------- */
+
+body.admin-page .admin-topbar {
+    background: rgba(8, 34, 44, 0.62) !important;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+body.admin-page .admin-topbar,
+body.admin-page .admin-topbar * {
+    color: #ffffff !important;
+}
+
+/* ---------- PAGE HEADINGS ---------- */
+
+body.admin-page .admin-page-heading h1 {
+    color: #ffffff !important;
+    font-weight: 800;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.55);
+}
+
+body.admin-page .admin-page-heading p {
+    color: rgba(255, 255, 255, 0.82) !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.55);
+}
+
+/* ---------- STATISTICS CARDS ---------- */
+
+body.admin-page .stat-card {
+    background: rgba(255, 255, 255, 0.88) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255, 255, 255, 0.75) !important;
+    border-radius: 22px !important;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+body.admin-page .stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+body.admin-page .stat-card h3,
+body.admin-page .stat-card p,
+body.admin-page .stat-card strong,
+body.admin-page .stat-card span {
+    color: #123047 !important;
+}
+
+/* ---------- CONTENT SECTIONS ---------- */
+
+body.admin-page .admin-section {
+    background: rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border-radius: 22px;
+    padding: 24px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.14);
+}
+
+/* ---------- SECTION TEXT ---------- */
+
+body.admin-page .admin-section h2,
+body.admin-page .admin-section h3 {
+    color: #ffffff !important;
+    text-shadow: 0 2px 7px rgba(0, 0, 0, 0.55);
+}
+
+body.admin-page .admin-section p {
+    color: rgba(255, 255, 255, 0.86) !important;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+body.admin-page .admin-section a {
+    color: #6fffd3 !important;
+    font-weight: 700;
+}
+
+/* ---------- TOOLBAR ---------- */
+
+body.admin-page .admin-toolbar {
+    background: rgba(255, 255, 255, 0.88) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+body.admin-page .admin-toolbar input,
+body.admin-page .admin-toolbar select {
+    background: rgba(255, 255, 255, 0.92) !important;
+    color: #17344a !important;
+    border: 1px solid #d9e4ea !important;
+}
+
+/* ---------- REPORT CARDS ---------- */
+
+body.admin-page .report-card {
+    background: rgba(255, 255, 255, 0.91) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    border-radius: 20px !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.15);
+
+    color: #17344a;
+}
+
+body.admin-page .report-card h3,
+body.admin-page .report-card h4,
+body.admin-page .report-card p,
+body.admin-page .report-card span {
+    color: #17344a;
+}
+
+/* ---------- GREEN BUTTONS ---------- */
+
+body.admin-page button,
+body.admin-page .admin-btn,
+body.admin-page .primary-btn {
+    border-radius: 12px;
+}
+
+body.admin-page .admin-btn-primary,
+body.admin-page .primary-btn {
+    background: linear-gradient(
+        135deg,
+        #08b889,
+        #10a97f
+    ) !important;
+
+    border: none !important;
+    color: #ffffff !important;
+
+    box-shadow: 0 8px 20px rgba(8, 184, 137, 0.25);
+}
+
+/* ---------- MAP ---------- */
+
+body.admin-page #adminMap {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+}
+
+/* ---------- RESIDENT CARDS ---------- */
+
+body.admin-page .resident-card {
+    background: rgba(255, 255, 255, 0.90) !important;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border-radius: 20px !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+}
+
+/* ---------- SETTINGS ---------- */
+
+body.admin-page .settings-card,
+body.admin-page .settings-section {
+    background: rgba(255, 255, 255, 0.90) !important;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+}
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 768px) {
+
+    body.admin-page .admin-section {
+        padding: 16px;
+        border-radius: 18px;
+    }
+
+    body.admin-page .stat-card {
+        border-radius: 18px !important;
+    }
+
+    body.admin-page .admin-page-heading h1 {
+        font-size: 28px;
+    }
+}
+/* =========================================================
+   SETTINGS - READABLE GLASS CARDS
+   ========================================================= */
+
+body.admin-page #settingsSection .settings-card,
+body.admin-page #settingsSection .settings-section {
+    color: #17344a !important;
+}
+
+/* Settings headings */
+body.admin-page #settingsSection h2,
+body.admin-page #settingsSection h3 {
+    color: #17344a !important;
+    text-shadow: none !important;
+}
+
+/* Settings descriptions */
+body.admin-page #settingsSection p {
+    color: #526b7a !important;
+    text-shadow: none !important;
+}
+
+/* Settings labels */
+body.admin-page #settingsSection label {
+    color: #17344a !important;
+}
+
+/* Settings select boxes */
+body.admin-page #settingsSection select {
+    color: #17344a !important;
+    background: #ffffff !important;
+    border: 1px solid #d5e0e6 !important;
+}
+
+/* Settings checkboxes */
+body.admin-page #settingsSection input[type="checkbox"] {
+    accent-color: #08b889;
+}
+/* =========================================================
+   ORGANIZATION MANAGEMENT
+   ========================================================= */
+
+body.admin-page .organization-form-card,
+body.admin-page .organization-directory-card {
+    margin-top: 24px;
+    background: rgba(255, 255, 255, 0.92) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 22px;
+    padding: 28px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+body.admin-page .organization-form-header h2,
+body.admin-page .organization-directory-card h2 {
+    color: #17344a !important;
+    text-shadow: none !important;
+    margin-bottom: 6px;
+}
+
+body.admin-page .organization-form-header p,
+body.admin-page .organization-directory-card p {
+    color: #526b7a !important;
+    text-shadow: none !important;
+}
+
+body.admin-page .section-eyebrow {
+    color: #08a982 !important;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+}
+
+.organization-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 24px;
+}
+
+.organization-form-grid .full-width {
+    grid-column: 1 / -1;
+}
+
+.organization-form-grid .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.organization-form-grid label {
+    color: #17344a !important;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.organization-form-grid input,
+.organization-form-grid select,
+.organization-form-grid textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 14px;
+    border: 1px solid #d5e0e6;
+    border-radius: 12px;
+    background: #ffffff !important;
+    color: #17344a !important;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.organization-form-grid input:focus,
+.organization-form-grid select:focus,
+.organization-form-grid textarea:focus {
+    border-color: #08b889;
+    box-shadow: 0 0 0 3px rgba(8, 184, 137, 0.12);
+}
+
+.organization-form-grid textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+.organization-form-grid input::placeholder,
+.organization-form-grid textarea::placeholder {
+    color: #91a2ad;
+}
+
+.organization-form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+}
+
+body.admin-page .organization-form-actions .admin-primary-action {
+    background: linear-gradient(
+        135deg,
+        #08b889,
+        #10a97f
+    ) !important;
+    color: #ffffff !important;
+    border: none !important;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+body.admin-page .organization-form-actions .admin-secondary-action {
+    background: #eef3f5 !important;
+    color: #17344a !important;
+    border: 1px solid #d5e0e6 !important;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.organization-message {
+    margin-top: 18px;
+    padding: 12px 15px;
+    border-radius: 10px;
+    display: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.organization-message.success {
+    display: block;
+    background: #e8f8f2;
+    color: #087957;
+    border: 1px solid #b9ead9;
+}
+
+.organization-message.error {
+    display: block;
+    background: #fff0f0;
+    color: #b42318;
+    border: 1px solid #f3c2c2;
+}
+
+.organizations-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.organization-card {
+    background: #ffffff;
+    border: 1px solid #e0e8ec;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.organization-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 16px;
+}
+
+.organization-card h3 {
+    color: #17344a !important;
+    text-shadow: none !important;
+    margin: 0 0 5px;
+}
+
+.organization-card .organization-type {
+    color: #08a982 !important;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.organization-status {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.organization-status.active {
+    background: #e8f8f2;
+    color: #087957;
+}
+
+.organization-status.inactive {
+    background: #f1f3f5;
+    color: #667085;
+}
+
+.organization-card-details {
+    display: grid;
+    gap: 9px;
+}
+
+.organization-detail {
+    color: #526b7a;
+    font-size: 14px;
+}
+
+.organization-detail strong {
+    color: #17344a;
+}
+
+.organization-card-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+    padding-top: 15px;
+    border-top: 1px solid #edf1f3;
+}
+.organization-edit-btn,
+.organization-delete-btn {
+    border: none;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.organization-edit-btn {
+    background: #e8f8f2;
+    color: #087957;
+    border: 1px solid #b9ead9;
+}
+
+.organization-edit-btn:hover {
+    background: #d5f3e8;
+    transform: translateY(-1px);
+}
+
+.organization-delete-btn {
+    background: #fff0f0;
+    color: #b42318;
+    border: 1px solid #f3c2c2;
+}
+
+.organization-delete-btn:hover {
+    background: #ffe0e0;
+    transform: translateY(-1px);
+}
+
+.organization-edit-btn:disabled,
+.organization-delete-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.organization-empty {
+    grid-column: 1 / -1;
+    padding: 35px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px dashed #cbd8de;
+    border-radius: 16px;
+    color: #526b7a;
+}
+
+@media (max-width: 900px) {
+
+    .organization-form-grid,
+    .organizations-list {
+        grid-template-columns: 1fr;
+    }
+
+    .organization-form-grid .full-width {
+        grid-column: auto;
+    }
+
+    body.admin-page .organization-form-card,
+    body.admin-page .organization-directory-card {
+        padding: 20px;
+    }
+}
+</style>
 </body>
 </html>

@@ -40,9 +40,14 @@ document.addEventListener("DOMContentLoaded", async function () {
     ========================================================== */
 
     let allReports = [];
-    let allResidents = [];
-    let adminMap = null;
-    let mapMarkers = [];
+let allResidents = [];
+
+let allOrganizations = [];
+let allAssignments = [];
+let assignmentMap = {};
+
+let adminMap = null;
+let mapMarkers = [];
 
 
     /* =========================================================
@@ -128,6 +133,89 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         return;
     }
+    /* =========================================================
+   LOAD ORGANIZATIONS
+========================================================= */
+
+async function loadOrganizations() {
+
+    const {
+        data: organizations,
+        error
+    } = await supabaseClient
+        .from("organizations")
+        .select("*")
+        .order("name", {
+            ascending: true
+        });
+
+    if (error) {
+
+        console.error(
+            "Organizations loading error:",
+            error
+        );
+
+        allOrganizations = [];
+        return;
+    }
+
+    allOrganizations = organizations || [];
+}
+
+
+/* =========================================================
+   LOAD REPORT ASSIGNMENTS
+========================================================= */
+
+async function loadAssignments() {
+
+    const {
+        data: assignments,
+        error
+    } = await supabaseClient
+        .from("report_assignments")
+        .select("*")
+        .order("assigned_at", {
+            ascending: false
+        });
+
+    if (error) {
+
+        console.error(
+            "Assignments loading error:",
+            error
+        );
+
+        allAssignments = [];
+        assignmentMap = {};
+
+        return;
+    }
+
+    allAssignments = assignments || [];
+
+    assignmentMap = {};
+
+    /*
+     * Newest assignment comes first.
+     * Therefore the first assignment for each
+     * report is treated as the current assignment.
+     */
+
+    allAssignments.forEach(assignment => {
+
+        if (
+            assignment.report_id &&
+            !assignmentMap[assignment.report_id]
+        ) {
+
+            assignmentMap[assignment.report_id] =
+                assignment;
+        }
+
+    });
+}
 
 
     /* =========================================================
@@ -667,6 +755,78 @@ document.addEventListener("DOMContentLoaded", async function () {
                         </button>
 
                     </div>
+                    <div class="report-assignment-area">
+
+    <h4>Assign Responsible Organization</h4>
+
+    ${
+        assignmentMap[report.id]
+            ? `
+                <div class="current-assignment">
+
+                    <p>
+                        <strong>Currently Assigned:</strong>
+                        ${escapeHTML(
+                            getOrganizationName(
+                                assignmentMap[report.id].organization_id
+                            )
+                        )}
+                    </p>
+
+                    <p>
+                        <strong>Assignment Status:</strong>
+                        ${escapeHTML(
+                            assignmentMap[report.id].status ||
+                            "Assigned"
+                        )}
+                    </p>
+
+                    <p>
+                        <strong>Assigned:</strong>
+                        ${formatDate(
+                            assignmentMap[report.id].assigned_at
+                        )}
+                    </p>
+
+                </div>
+            `
+            : `
+                <p class="no-assignment">
+                    No organization assigned yet.
+                </p>
+            `
+    }
+
+    <label>
+        Responsible Organization
+    </label>
+
+    <select
+        class="organization-select"
+        data-id="${report.id}"
+    >
+      ${organizationOptions(
+    assignmentMap[report.id]
+        ? assignmentMap[report.id].organization_id
+        : "",
+    report.category,
+    report.county
+)}
+    </select>
+
+    <button
+        type="button"
+        class="assign-organization-btn"
+        data-id="${report.id}"
+    >
+        ${
+            assignmentMap[report.id]
+                ? "🔄 Reassign Organization"
+                : "📌 Assign Organization"
+        }
+    </button>
+
+</div>
 
                 </div>
 
@@ -753,6 +913,324 @@ document.addEventListener("DOMContentLoaded", async function () {
             .join("");
 
     }
+   /* =========================================================
+   ORGANIZATION OPTIONS
+========================================================= */
+
+function organizationOptions(
+    selectedOrganizationId,
+    reportCategory,
+    reportCounty
+) {
+
+    const activeOrganizations =
+        allOrganizations.filter(
+            organization =>
+                organization.status === "Active"
+        );
+
+
+    if (!activeOrganizations.length) {
+
+        return `
+            <option value="">
+                No active organizations available
+            </option>
+        `;
+    }
+
+
+    /*
+     * Match organizations to the report category.
+     *
+     * Example:
+     * Roads report → KURA / KeRRA
+     * Security report → National Police Service
+     * Electricity report → Kenya Power
+     */
+
+    const matchingOrganizations =
+    activeOrganizations.filter(
+        organization => {
+
+            const typeMatches =
+                organization.type &&
+                organization.type.toLowerCase() ===
+                String(reportCategory || "").toLowerCase();
+
+            const countyMatches =
+                organization.counties &&
+                (
+                    organization.counties
+                        .toLowerCase()
+                        .includes(
+                            String(reportCounty || "").toLowerCase()
+                        )
+                    ||
+                    organization.counties
+                        .toLowerCase()
+                        .includes("all 47 counties")
+                );
+
+            return typeMatches && countyMatches;
+        }
+    );
+
+
+    /*
+     * If matching organizations exist,
+     * show only those organizations.
+     *
+     * If none exist yet, show all active organizations
+     * so the admin can still manually assign one.
+     */
+
+    const otherOrganizations =
+    activeOrganizations.filter(
+        organization =>
+            !matchingOrganizations.some(
+                matching =>
+                    String(matching.id) ===
+                    String(organization.id)
+            )
+    );
+
+
+const organizationsToShow = [
+    ...matchingOrganizations,
+    ...otherOrganizations
+];
+
+    return `
+        <option value="">
+            Select organization...
+        </option>
+
+        ${organizationsToShow
+            .map(organization => {
+
+                const selected =
+                    String(
+                        selectedOrganizationId || ""
+                    ) ===
+                    String(organization.id)
+                        ? "selected"
+                        : "";
+
+                return `
+                    <option
+                        value="${escapeHTML(
+                            organization.id
+                        )}"
+                        ${selected}
+                    >
+                        ${escapeHTML(
+                            organization.name
+                        )}
+                        ${
+                            organization.type
+                                ? ` — ${escapeHTML(
+                                    organization.type
+                                  )}`
+                                : ""
+                        }
+                    </option>
+                `;
+
+            })
+            .join("")}
+    `;
+}
+
+/* =========================================================
+   GET ORGANIZATION NAME
+========================================================= */
+
+function getOrganizationName(organizationId) {
+
+    const organization =
+        allOrganizations.find(
+            item =>
+                String(item.id) ===
+                String(organizationId)
+        );
+
+    return organization
+        ? organization.name
+        : "Unknown organization";
+}
+
+
+/* =========================================================
+   ASSIGN REPORT TO ORGANIZATION
+========================================================= */
+
+async function assignReportToOrganization(
+    reportId,
+    organizationId,
+    button
+) {
+
+    if (!organizationId) {
+
+        alert(
+            "Please select an organization first."
+        );
+
+        return;
+    }
+
+    const organization =
+        allOrganizations.find(
+            item =>
+                String(item.id) ===
+                String(organizationId)
+        );
+
+    if (!organization) {
+
+        alert(
+            "The selected organization is no longer available."
+        );
+
+        return;
+    }
+
+    const existingAssignment =
+        assignmentMap[reportId];
+
+    button.disabled = true;
+
+    button.textContent =
+        existingAssignment
+            ? "Reassigning..."
+            : "Assigning...";
+
+    try {
+
+        let error = null;
+
+        /* =================================================
+           REASSIGN EXISTING REPORT
+        ================================================== */
+
+        if (existingAssignment) {
+
+            const result =
+                await supabaseClient
+                    .from("report_assignments")
+                    .update({
+
+                        organization_id:
+                            Number(organizationId),
+
+                        assigned_by:
+                            user.id,
+
+                        assigned_at:
+                            new Date().toISOString(),
+
+                        status:
+                            "Assigned",
+
+                        notes:
+                            null,
+
+                        updated_at:
+                            new Date().toISOString()
+
+                    })
+                    .eq(
+                        "id",
+                        existingAssignment.id
+                    );
+
+            error = result.error;
+
+        }
+
+        /* =================================================
+           FIRST-TIME ASSIGNMENT
+        ================================================== */
+
+        else {
+
+            const result =
+                await supabaseClient
+                    .from("report_assignments")
+                    .insert({
+
+                        report_id:
+                            Number(reportId),
+
+                        organization_id:
+                            Number(organizationId),
+
+                        assigned_by:
+                            user.id,
+
+                        status:
+                            "Assigned"
+
+                    });
+
+            error = result.error;
+        }
+
+
+        /* =================================================
+           HANDLE ERROR
+        ================================================== */
+
+        if (error) {
+
+            console.error(
+                "Assignment error:",
+                error
+            );
+
+            alert(
+                "Unable to assign organization: " +
+                error.message
+            );
+
+            return;
+        }
+
+
+        /* =================================================
+           SUCCESS
+        ================================================== */
+
+        alert(
+            existingAssignment
+                ? "Report reassigned successfully."
+                : "Report assigned successfully."
+        );
+
+
+        await loadAssignments();
+
+        renderReports();
+
+
+    } catch (error) {
+
+        console.error(
+            "Unexpected assignment error:",
+            error
+        );
+
+        alert(
+            "Unable to assign organization. Please try again."
+        );
+
+    } finally {
+
+        button.disabled = false;
+
+    }
+}
 
 
     /* =========================================================
@@ -760,6 +1238,49 @@ document.addEventListener("DOMContentLoaded", async function () {
     ========================================================== */
 
     function attachReportEvents() {
+        const assignmentButtons =
+    document.querySelectorAll(
+        ".assign-organization-btn"
+    );
+
+
+assignmentButtons.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        async function () {
+
+            const reportId =
+                this.dataset.id;
+
+            const card =
+                document.querySelector(
+                    `.report-card[data-report-id="${reportId}"]`
+                );
+
+            if (!card) {
+                return;
+            }
+
+            const organizationSelect =
+                card.querySelector(
+                    ".organization-select"
+                );
+
+            if (!organizationSelect) {
+                return;
+            }
+
+            await assignReportToOrganization(
+                reportId,
+                organizationSelect.value,
+                this
+            );
+
+        }
+    );
+
+});
 
         const saveButtons =
             document.querySelectorAll(
@@ -1666,10 +2187,11 @@ document.addEventListener("DOMContentLoaded", async function () {
     /* =========================================================
        INITIAL LOAD
     ========================================================== */
-
-    await loadReports();
-
-    await loadResidents();
+await loadOrganizations();
+await loadAssignments();
+await loadReports();
+await loadResidents();
+  
 
 
     /* =========================================================
@@ -1708,4 +2230,491 @@ if (logoutBtn) {
 
         window.location.href = "login.html";
     });
+}
+// ======================================================
+//// ======================================================
+/// ======================================================
+// ORGANIZATION FINDER
+// ======================================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const findOrganizationBtn =
+        document.getElementById(
+            "findOrganizationBtn"
+        );
+
+    if (!findOrganizationBtn) {
+        return;
+    }
+
+    findOrganizationBtn.addEventListener(
+        "click",
+        async () => {
+
+            const organizationType =
+                document.getElementById(
+                    "organizationType"
+                )?.value;
+
+            const county =
+                document.getElementById(
+                    "organizationCounty"
+                )?.value;
+
+            const message =
+                document.getElementById(
+                    "organizationMessage"
+                );
+
+            /* =================================================
+               VALIDATION
+            ================================================== */
+
+            if (!organizationType) {
+
+                if (message) {
+                    message.textContent =
+                        "Please select an organization type first.";
+
+                    message.style.color =
+                        "#dc2626";
+                }
+
+                return;
+            }
+
+            if (!county) {
+
+                if (message) {
+                    message.textContent =
+                        "Please select a county first.";
+
+                    message.style.color =
+                        "#dc2626";
+                }
+
+                return;
+            }
+
+            /* =================================================
+               START SEARCH
+            ================================================== */
+
+            findOrganizationBtn.disabled =
+                true;
+
+            findOrganizationBtn.textContent =
+                "🔎 Finding organization...";
+
+            if (message) {
+
+                message.textContent =
+                    `Finding ${organizationType} organization for ${county}...`;
+
+                message.style.color =
+                    "#2563eb";
+            }
+
+            try {
+
+                /* =================================================
+                   CALL SUPABASE EDGE FUNCTION
+                ================================================== */
+
+                const {
+                    data,
+                    error
+                } =
+                    await supabaseClient.functions.invoke(
+                        "find-organization",
+                        {
+                            body: {
+                                organizationType:
+                                    organizationType,
+
+                                county:
+                                    county
+                            }
+                        }
+                    );
+
+                /* =================================================
+                   HANDLE FUNCTION ERROR
+                ================================================== */
+
+                if (error) {
+
+                    console.error(
+                        "Organization function error:",
+                        error
+                    );
+
+                    throw error;
+                }
+
+                console.log(
+                    "Organization finder response:",
+                    data
+                );
+
+                /* =================================================
+                   NO ORGANIZATION FOUND
+                ================================================== */
+
+                if (
+                    !data ||
+                    data.found !== true ||
+                    !data.organization
+                ) {
+
+                    if (message) {
+
+                        message.innerHTML = `
+                            <strong>
+                                No organization found.
+                            </strong>
+                            <br><br>
+
+                            We do not currently have a
+                            trusted organization listed for
+                            <strong>
+                                ${escapeOrganizationFinderHTML(
+                                    organizationType
+                                )}
+                            </strong>
+                            in
+                            <strong>
+                                ${escapeOrganizationFinderHTML(
+                                    county
+                                )}
+                            </strong>.
+                            <br><br>
+
+                            You can enter the organization
+                            details manually.
+                        `;
+
+                        message.style.color =
+                            "#9a6700";
+                    }
+
+                    return;
+                }
+
+                /* =================================================
+                   ORGANIZATION FOUND
+                ================================================== */
+
+                const organization =
+                    data.organization;
+
+                console.log(
+                    "Organization found:",
+                    organization
+                );
+
+                /* =================================================
+                   AUTO-FILL ORGANIZATION NAME
+                ================================================== */
+
+                const nameField =
+                    document.getElementById(
+                        "organizationName"
+                    );
+
+                if (nameField) {
+                    nameField.value =
+                        organization.name || "";
+                }
+
+                /* =================================================
+                   AUTO-FILL DEPARTMENT
+                ================================================== */
+
+                const departmentField =
+                    document.getElementById(
+                        "organizationDepartment"
+                    );
+
+                if (departmentField) {
+                    departmentField.value =
+                        organization.department || "";
+                }
+
+                /* =================================================
+                   AUTO-FILL PHONE
+                ================================================== */
+
+                const phoneField =
+                    document.getElementById(
+                        "organizationPhone"
+                    );
+
+                if (phoneField) {
+                    phoneField.value =
+                        organization.phone || "";
+                }
+
+                /* =================================================
+                   AUTO-FILL EMAIL
+                ================================================== */
+
+                const emailField =
+                    document.getElementById(
+                        "organizationEmail"
+                    );
+
+                if (emailField) {
+                    emailField.value =
+                        organization.email || "";
+                }
+
+                /* =================================================
+                   AUTO-FILL WEBSITE
+                ================================================== */
+
+                const websiteField =
+                    document.getElementById(
+                        "organizationWebsite"
+                    );
+
+                if (websiteField) {
+                    websiteField.value =
+                        organization.website || "";
+                }
+
+                /* =================================================
+                   AUTO-FILL SOCIAL HANDLE
+                ================================================== */
+
+                const socialField =
+                    document.getElementById(
+                        "organizationSocial"
+                    );
+
+                if (socialField) {
+                    socialField.value =
+                        organization.social_handle || "";
+                }
+
+                /* =================================================
+                   AUTO-FILL SERVICE AREA
+                ================================================== */
+
+                const serviceAreaField =
+                    document.getElementById(
+                        "organizationServiceArea"
+                    );
+
+                if (serviceAreaField) {
+                    serviceAreaField.value =
+                        organization.service_area || "";
+                }
+
+                /* =================================================
+                   AUTO-FILL COUNTIES
+                ================================================== */
+
+                const countiesField =
+                    document.getElementById(
+                        "organizationCounties"
+                    );
+
+                if (countiesField) {
+                    countiesField.value =
+                        organization.counties || "";
+                }
+
+                /* =================================================
+                   AUTO-FILL ADDRESS
+                ================================================== */
+
+                const addressField =
+                    document.getElementById(
+                        "organizationAddress"
+                    );
+
+                if (addressField) {
+                    addressField.value =
+                        organization.address || "";
+                }
+
+                /* =================================================
+                   AUTO-FILL SERVICES
+                ================================================== */
+
+                const servicesField =
+                    document.getElementById(
+                        "organizationServices"
+                    );
+
+                if (servicesField) {
+                    servicesField.value =
+                        organization.services || "";
+                }
+
+                /* =================================================
+                   AUTO-FILL NOTES
+                ================================================== */
+
+                const notesField =
+                    document.getElementById(
+                        "organizationNotes"
+                    );
+
+                if (notesField) {
+                    notesField.value =
+                        organization.notes || "";
+                }
+
+                /* =================================================
+                   KEEP ORGANIZATION TYPE SELECTED
+                ================================================== */
+
+                const typeField =
+                    document.getElementById(
+                        "organizationType"
+                    );
+
+                if (typeField) {
+                    typeField.value =
+                        organization.type ||
+                        organizationType;
+                }
+
+                /* =================================================
+                   SET STATUS TO ACTIVE
+                ================================================== */
+
+                const statusField =
+                    document.getElementById(
+                        "organizationStatus"
+                    );
+
+                if (statusField) {
+                    statusField.value =
+                        "Active";
+                }
+
+                /* =================================================
+                   SUCCESS MESSAGE
+                ================================================== */
+
+                if (message) {
+
+                    message.innerHTML = `
+                        <strong>
+                            ✓ Organization found successfully!
+                        </strong>
+
+                        <br><br>
+
+                        <strong>
+                            ${escapeOrganizationFinderHTML(
+                                organization.name
+                            )}
+                        </strong>
+
+                        <br><br>
+
+                        The organization details have been
+                        automatically filled into the form.
+
+                        <br><br>
+
+                        <strong>
+                            Please review the information
+                            before saving.
+                        </strong>
+                    `;
+
+                    message.style.color =
+                        "#166534";
+                }
+
+                /* =================================================
+                   SCROLL TO ORGANIZATION NAME
+                ================================================== */
+
+                if (nameField) {
+
+                    nameField.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center"
+                    });
+                }
+
+            } catch (error) {
+
+                console.error(
+                    "Organization lookup failed:",
+                    error
+                );
+
+                if (message) {
+
+                    message.innerHTML = `
+                        <strong>
+                            Organization lookup failed.
+                        </strong>
+
+                        <br><br>
+
+                        ${escapeOrganizationFinderHTML(
+                            error.message ||
+                            "Unknown error"
+                        )}
+                    `;
+
+                    message.style.color =
+                        "#dc2626";
+                }
+
+            } finally {
+
+                /* =================================================
+                   RESTORE BUTTON
+                ================================================== */
+
+                findOrganizationBtn.disabled =
+                    false;
+
+                findOrganizationBtn.textContent =
+                    "🔎 Find Organization";
+            }
+        }
+    );
+});
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeOrganizationFinderHTML(
+    value
+) {
+
+    return String(value ?? "")
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 }
