@@ -1,369 +1,402 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Smart Community Problem Reporting System</title>
-
+    <meta name="description" content="Smart Community helps residents report community problems and track progress toward safer, cleaner neighborhoods.">
+    <title>Smart Community | Problem Reporting System</title>
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* Public homepage navigation and information sections */
+        html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
+        .public-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding: 16px clamp(20px, 5vw, 70px);
+            background: #fff;
+            border-bottom: 1px solid #e5ecef;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .public-nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .public-nav a {
+            color: #174456;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .public-nav a:hover { color: #079c76; }
+
+        .public-nav .nav-cta {
+            background: #079c76;
+            color: #fff;
+            padding: 10px 17px;
+            border-radius: 10px;
+        }
+
+        .public-section {
+            padding: 65px clamp(20px, 7vw, 100px);
+        }
+
+        .public-section-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .public-section h2 {
+            color: #143f50;
+            font-size: clamp(1.7rem, 3vw, 2.4rem);
+            margin: 0 0 16px;
+        }
+
+        .public-section p {
+            color: #536b77;
+            line-height: 1.8;
+        }
+
+        .public-eyebrow {
+            color: #079c76 !important;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            font-size: .8rem;
+        }
+
+        .public-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 28px;
+        }
+
+        .public-card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 18px;
+            border: 1px solid #e2ebee;
+            box-shadow: 0 8px 25px rgba(20, 63, 80, .06);
+        }
+
+        .public-card .card-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .public-card h3 {
+            color: #174456;
+            margin: 0 0 10px;
+        }
+
+        .public-card p { margin-bottom: 0; }
+
+        .public-how { background: #f0f7f7; }
+
+        .public-contact-card {
+            background: #123c4b;
+            color: #fff;
+            padding: clamp(25px, 5vw, 48px);
+            border-radius: 22px;
+        }
+
+        .public-contact-card h2,
+        .public-contact-card p { color: #fff; }
+
+        .public-contact-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 13px 20px;
+            background: #12bd8c;
+            color: #063b32;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 800;
+        }
+
+        .public-faq details {
+            background: #fff;
+            border: 1px solid #e2ebee;
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-top: 12px;
+        }
+
+        .public-faq summary {
+            color: #174456;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .public-faq details p { margin-bottom: 0; }
+
+        .public-footer {
+            background: #0b2c38;
+            color: #e5f0f2;
+            padding: 30px 20px;
+            text-align: center;
+            line-height: 1.9;
+        }
+
+        .public-footer p { margin: 5px 0; }
+
+        .public-footer a { color: #7de7c7; }
+
+        @media (max-width: 650px) {
+            .public-nav { justify-content: center; }
+            .public-nav-links { gap: 13px; }
+            .public-nav-links a { font-size: .9rem; }
+            .public-nav .nav-cta { padding: 8px 12px; }
+        }
+    </style>
 </head>
 
 <body class="landing-page">
 
-    <!-- =====================================================
-         HEADER
-         ===================================================== -->
-
-    <header class="landing-header">
-
+    <header class="landing-header" id="home">
         <div class="landing-brand">
-
-            <div class="landing-brand-icon">
-                🏘️
-            </div>
-
+            <div class="landing-brand-icon">🏘️</div>
             <div>
-                <h1>
-                    Smart <span>Community</span>
-                </h1>
-
-                <p>
-                    Problem Reporting System
-                </p>
+                <h1>Smart <span>Community</span></h1>
+                <p>Problem Reporting System</p>
             </div>
-
         </div>
-
 
         <div class="landing-header-message">
-
             <span>👥</span>
-
             <div>
                 <strong>Stronger Communities</strong>
-
-                <small>
-                    Through Better Reporting
-                </small>
+                <small>Through Better Reporting</small>
             </div>
-
         </div>
-
     </header>
 
-
-    <!-- =====================================================
-         HERO SECTION
-         ===================================================== -->
-
-    <main class="landing-hero">
-
-        <div class="landing-background-shape shape-one"></div>
-
-        <div class="landing-background-shape shape-two"></div>
-
-
-        <div class="landing-content">
-
-
-            <!-- MAIN WELCOME CARD -->
-
-            <div class="landing-card">
-
-                <div class="landing-logo">
-                    🏘️
-                </div>
-
-
-                <p class="landing-eyebrow">
-                    SMART COMMUNITY PLATFORM
-                </p>
-
-
-                <h2>
-                    Help Improve<br>
-                    <span>Our Community</span>
-                </h2>
-
-
-                <p class="landing-description">
-                    Report community problems and help make
-                    our neighborhoods safer, cleaner and better
-                    for everyone.
-                </p>
-
-
-                <div class="landing-buttons">
-
-                    <a href="login.html" class="landing-btn primary">
-
-                        <span>👤</span>
-
-                        <span>
-                            Login
-                        </span>
-
-                        <strong>
-                            →
-                        </strong>
-
-                    </a>
-
-
-                    <a href="register.html" class="landing-btn secondary">
-
-                        <span>＋</span>
-
-                        <span>
-                            Create Account
-                        </span>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- SIDE INFORMATION CARD -->
-
-            <div class="landing-side-message">
-
-                <div class="side-message-title">
-                    Better Reports
-                </div>
-
-
-                <div class="side-message-subtitle">
-                    Stronger Communities
-                </div>
-
-
-                <div class="side-message-line"></div>
-
-
-                <p>
-                    Your voice can help identify
-                    problems and create positive
-                    change in the community.
-                </p>
-
-            </div>
-
-
-
-            <!-- INTERACTIVE FEATURES -->
-
-            <div class="landing-features">
-
-
-                <!-- REPORT -->
-
-                <a href="login.html" class="landing-feature">
-
-                    <div class="feature-icon">
-                        🛡️
-                    </div>
-
-                    <div>
-
-                        <strong>
-                            Report
-                        </strong>
-
-                        <span>
-                            Login to Report Community Issues
-                        </span>
-
-                    </div>
-
-                </a>
-
-
-
-                <!-- TRACK -->
-
-                <a href="login.html" class="landing-feature">
-
-                    <div class="feature-icon">
-                        📍
-                    </div>
-
-                    <div>
-
-                        <strong>
-                            Track
-                        </strong>
-
-                        <span>
-                            Login to Track Your Reports
-                        </span>
-
-                    </div>
-
-                </a>
-
-
-
-                <!-- CONNECT -->
-
-                <a href="#community" class="landing-feature">
-
-                    <div class="feature-icon">
-                        👥
-                    </div>
-
-                    <div>
-
-                        <strong>
-                            Connect
-                        </strong>
-
-                        <span>
-                            With Your Community
-                        </span>
-
-                    </div>
-
-                </a>
-
-
-
-                <!-- BUILD -->
-
-                <a href="#better-tomorrow" class="landing-feature">
-
-                    <div class="feature-icon">
-                        🌱
-                    </div>
-
-                    <div>
-
-                        <strong>
-                            Build
-                        </strong>
-
-                        <span>
-                            A Better Tomorrow
-                        </span>
-
-                    </div>
-
-                </a>
-
-            </div>
-
+    <nav class="public-nav" aria-label="Main navigation">
+        <div class="public-nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#faq">FAQs</a>
+            <a href="#contact">Contact Us</a>
         </div>
+        <div class="public-nav-links">
+            <a href="login.html">Login</a>
+            <a href="register.html" class="nav-cta">Create Account</a>
+        </div>
+    </nav>
 
+    <main>
+        <section class="landing-hero">
+            <div class="landing-background-shape shape-one"></div>
+            <div class="landing-background-shape shape-two"></div>
+
+            <div class="landing-content">
+                <div class="landing-card">
+                    <div class="landing-logo">🏘️</div>
+                    <p class="landing-eyebrow">SMART COMMUNITY PLATFORM</p>
+
+                    <h2>Help Improve<br><span>Our Community</span></h2>
+
+                    <p class="landing-description">
+                        Notice a damaged road, overflowing waste, broken streetlight
+                        or another community problem? Report it and help make our
+                        neighborhoods safer, cleaner and better for everyone.
+                    </p>
+
+                    <div class="landing-buttons">
+                        <a href="login.html" class="landing-btn primary">
+                            <span>👤</span><span>Login</span><strong>→</strong>
+                        </a>
+                        <a href="register.html" class="landing-btn secondary">
+                            <span>＋</span><span>Create Account</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="landing-side-message">
+                    <div class="side-message-title">Better Reports</div>
+                    <div class="side-message-subtitle">Stronger Communities</div>
+                    <div class="side-message-line"></div>
+                    <p>Your voice matters. Help identify local problems and support positive change.</p>
+                </div>
+
+                <div class="landing-features">
+                    <a href="login.html" class="landing-feature">
+                        <div class="feature-icon">📝</div>
+                        <div><strong>Report</strong><span>Submit community issues</span></div>
+                    </a>
+                    <a href="login.html" class="landing-feature">
+                        <div class="feature-icon">📍</div>
+                        <div><strong>Track</strong><span>Follow report progress</span></div>
+                    </a>
+                    <a href="#about" class="landing-feature">
+                        <div class="feature-icon">👥</div>
+                        <div><strong>Connect</strong><span>Support your community</span></div>
+                    </a>
+                    <a href="#how-it-works" class="landing-feature">
+                        <div class="feature-icon">🌱</div>
+                        <div><strong>Improve</strong><span>Build a better tomorrow</span></div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="public-section" id="about">
+            <div class="public-section-inner">
+                <p class="public-eyebrow">ABOUT SMART COMMUNITY</p>
+                <h2>A Simple Way to Speak Up About Community Problems</h2>
+                <p>
+                    Smart Community Problem Reporting System is a web-based platform
+                    that helps residents report local issues in an organized way.
+                    Residents can describe a problem, select its category, provide
+                    a location, and optionally attach a photograph. They can then
+                    check their reports and see status updates.
+                </p>
+                <p>
+                    The goal is to make reporting easier, improve visibility of
+                    community concerns, and help administrators coordinate responses.
+                    The platform supports reporting and tracking; it does not guarantee
+                    that an external authority will resolve every report.
+                </p>
+
+                <div class="public-card-grid">
+                    <article class="public-card">
+                        <div class="card-icon">🛣️</div>
+                        <h3>Report Local Issues</h3>
+                        <p>Report roads, drainage, water, waste, street lighting, security and environmental concerns.</p>
+                    </article>
+                    <article class="public-card">
+                        <div class="card-icon">📊</div>
+                        <h3>Track Progress</h3>
+                        <p>Return to your account to check the recorded status of your submitted reports.</p>
+                    </article>
+                    <article class="public-card">
+                        <div class="card-icon">🤝</div>
+                        <h3>Support Action</h3>
+                        <p>Help administrators organize reports and identify the organizations that may be responsible.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="public-section public-how" id="how-it-works">
+            <div class="public-section-inner">
+                <p class="public-eyebrow">GETTING STARTED</p>
+                <h2>How It Works</h2>
+                <p>Follow these simple steps to report and monitor a community problem.</p>
+
+                <div class="public-card-grid">
+                    <article class="public-card">
+                        <div class="card-icon">①</div>
+                        <h3>Create an Account</h3>
+                        <p>Register with your details and follow any email verification instructions provided.</p>
+                    </article>
+                    <article class="public-card">
+                        <div class="card-icon">②</div>
+                        <h3>Submit a Report</h3>
+                        <p>Sign in, describe the issue, choose a category and enter its location. Add a photo if available.</p>
+                    </article>
+                    <article class="public-card">
+                        <div class="card-icon">③</div>
+                        <h3>Track Your Report</h3>
+                        <p>Open your dashboard or reports page to review your submitted reports and their status.</p>
+                    </article>
+                    <article class="public-card">
+                        <div class="card-icon">④</div>
+                        <h3>Follow Updates</h3>
+                        <p>Check back for status changes as administrators review and manage the reported issue.</p>
+                    </article>
+                </div>
+
+                <p style="margin-top:28px">
+                    <a href="register.html" class="landing-btn primary">Get Started →</a>
+                </p>
+            </div>
+        </section>
+
+        <section class="public-section public-faq" id="faq">
+            <div class="public-section-inner">
+                <p class="public-eyebrow">NEED HELP?</p>
+                <h2>Frequently Asked Questions</h2>
+
+                <details>
+                    <summary>Do I need an account to submit a report?</summary>
+                    <p>Yes. Create an account and log in to access report submission and your personal dashboard.</p>
+                </details>
+
+                <details>
+                    <summary>What problems can I report?</summary>
+                    <p>You can report issues such as damaged roads, waste, water, drainage, street lighting, security and environmental concerns.</p>
+                </details>
+
+                <details>
+                    <summary>Can I track a report after submitting it?</summary>
+                    <p>Yes. Log in and open your dashboard or My Reports page to review the status of your reports.</p>
+                </details>
+
+                <details>
+                    <summary>Does submitting a report guarantee a solution?</summary>
+                    <p>No. The platform helps record, organize and track reports, but resolution depends on review and action by the responsible parties.</p>
+                </details>
+
+                <details>
+                    <summary>How can I contact the project developer?</summary>
+                    <p>Use the contact number listed in the Contact Us section below.</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="public-section" id="contact">
+            <div class="public-section-inner">
+                <div class="public-contact-card">
+                    <p class="public-eyebrow">CONTACT US</p>
+                    <h2>Need Help Getting Started?</h2>
+                    <p>
+                        Have a question about using the Smart Community Problem
+                        Reporting System? Contact the project developer for
+                        assistance with the platform.
+                    </p>
+                    <p><strong>Project developer:</strong> Geofrey Oluoch</p>
+                    <p><strong>Phone:</strong> 0108481235</p>
+                    <a class="public-contact-link" href="tel:0108481235">📞 Call 0108481235</a>
+                    <p style="font-size:.9rem; margin-top:18px">
+                        For urgent safety or emergency situations, contact the appropriate emergency service directly.
+                    </p>
+                </div>
+            </div>
+        </section>
     </main>
 
-
-
-    <!-- =====================================================
-         COMMUNITY CONNECTION SECTION
-         ===================================================== -->
-
-    <section id="community" class="landing-info-section">
-
-        <div class="landing-info-card">
-
-
-            <div class="landing-info-icon">
-                👥
-            </div>
-
-
-            <div>
-
-                <p class="landing-eyebrow">
-                    COMMUNITY CONNECTION
-                </p>
-
-
-                <h2>
-                    Connect With Your Community
-                </h2>
-
-
-                <p>
-                    Smart Community creates a simple way for
-                    residents to communicate problems that affect
-                    their neighborhoods. By reporting issues clearly
-                    and tracking their progress, residents can
-                    contribute to a more responsive community.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         BETTER TOMORROW SECTION
-         ===================================================== -->
-
-    <section id="better-tomorrow" class="landing-info-section">
-
-        <div class="landing-info-card">
-
-
-            <div class="landing-info-icon">
-                🌱
-            </div>
-
-
-            <div>
-
-                <p class="landing-eyebrow">
-                    COMMUNITY IMPACT
-                </p>
-
-
-                <h2>
-                    Build A Better Tomorrow
-                </h2>
-
-
-                <p>
-                    Every report can help identify an issue that
-                    needs attention. By bringing community problems
-                    into one organized platform, the system supports
-                    cleaner, safer and better-managed neighborhoods.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         FOOTER
-         ===================================================== -->
-
-    <footer class="landing-footer">
-
-        <span>
-            © 2026 Smart Community Problem Reporting System
-        </span>
-
-
-        <span>
-            Developed by <strong>Geofrey Oluoch</strong>
-            · Information Technology Student, Tom Mboya University
-        </span>
-
+    <footer class="public-footer">
+        <p><strong>Smart Community Problem Reporting System</strong></p>
+        <p>Helping residents report problems and support better communities.</p>
+        <p>
+            <a href="#home">Home</a> ·
+            <a href="#about">About</a> ·
+            <a href="#how-it-works">How It Works</a> ·
+            <a href="#faq">FAQs</a> ·
+            <a href="#contact">Contact Us</a> ·
+            <a href="login.html">Login</a>
+        </p>
+        <p>© 2026 Smart Community Problem Reporting System</p>
+        <p>
+            Developed by <strong>Geofrey Oluoch</strong> ·
+            Information Technology Student, Tom Mboya University
+        </p>
     </footer>
 
-
 </body>
-
 </html>
+```
