@@ -3257,5 +3257,266 @@ body.admin-page .organization-form-actions .admin-secondary-action {
     }
 }
 </style>
+
+<style>
+/* =====================================================
+   SMART COMMUNITY ADMIN — CLEAN, READABLE LIGHT THEME
+   Visual changes only; existing JavaScript is preserved.
+   ===================================================== */
+
+body.admin-page {
+    background: #f4f7fa !important;
+    color: #243447 !important;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Main content area */
+body.admin-page .admin-main {
+    background: #f4f7fa !important;
+    color: #243447 !important;
+}
+
+/* Sidebar: strong contrast against the light workspace */
+body.admin-page .admin-sidebar {
+    background: #123247 !important;
+    color: #ffffff !important;
+    border-right: 1px solid #dce5eb !important;
+    box-shadow: 4px 0 18px rgba(20, 40, 55, 0.08) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+body.admin-page .sidebar-brand {
+    border-bottom: 1px solid rgba(255,255,255,0.15) !important;
+}
+
+body.admin-page .sidebar-brand strong,
+body.admin-page .sidebar-brand span,
+body.admin-page .sidebar-link,
+body.admin-page .sidebar-link span {
+    color: #ffffff !important;
+    text-shadow: none !important;
+}
+
+body.admin-page .sidebar-link {
+    border-radius: 10px;
+}
+
+body.admin-page .sidebar-link:hover,
+body.admin-page .sidebar-link.active {
+    background: #20516a !important;
+    color: #ffffff !important;
+}
+
+body.admin-page .sidebar-logout:hover {
+    background: #7f2932 !important;
+}
+
+/* Top bar */
+body.admin-page .admin-topbar {
+    background: #ffffff !important;
+    color: #243447 !important;
+    border: 1px solid #e1e8ee !important;
+    box-shadow: 0 3px 12px rgba(20, 40, 55, 0.05) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+body.admin-page .admin-topbar *,
+body.admin-page .admin-user-info,
+body.admin-page .admin-topbar-title {
+    color: #243447 !important;
+    text-shadow: none !important;
+}
+
+body.admin-page .sidebar-toggle {
+    color: #123247 !important;
+    background: #edf3f6 !important;
+}
+
+/* Page headings and descriptive text */
+body.admin-page .admin-page-heading h1,
+body.admin-page .admin-section h1,
+body.admin-page .admin-section h2,
+body.admin-page .admin-section h3,
+body.admin-page .admin-section h4 {
+    color: #17344a !important;
+    text-shadow: none !important;
+}
+
+body.admin-page .admin-page-heading p,
+body.admin-page .admin-section p,
+body.admin-page .admin-section > p {
+    color: #526575 !important;
+    opacity: 1 !important;
+    text-shadow: none !important;
+}
+
+body.admin-page .admin-section a,
+body.admin-page .admin-section .view-all-link,
+body.admin-page #dashboardSection a {
+    color: #087957 !important;
+    font-weight: 600;
+    text-shadow: none !important;
+}
+
+/* Cards, panels and report areas */
+body.admin-page .admin-section .stat-card,
+body.admin-page .admin-section .statistic-card,
+body.admin-page .admin-section .dashboard-card,
+body.admin-page .admin-section .report-card,
+body.admin-page .admin-section .map-info-card,
+body.admin-page .admin-section .feature-placeholder,
+body.admin-page .admin-section .organization-form-card,
+body.admin-page .admin-section .organization-directory-card,
+body.admin-page .admin-section .organization-card,
+body.admin-page .admin-section .admin-panel,
+body.admin-page .admin-section .content-card {
+    background: #ffffff !important;
+    color: #243447 !important;
+    border: 1px solid #e0e8ee !important;
+    box-shadow: 0 5px 18px rgba(20, 40, 55, 0.05) !important;
+    text-shadow: none !important;
+}
+
+/* Remove dark overlays behind dashboard text */
+body.admin-page #dashboardSection .section-intro,
+body.admin-page #dashboardSection .overview-text {
+    background: #ffffff !important;
+    color: #243447 !important;
+    border: 1px solid #e0e8ee !important;
+    box-shadow: none !important;
+}
+
+body.admin-page #dashboardSection h2,
+body.admin-page #dashboardSection h3,
+body.admin-page #dashboardSection p {
+    color: #17344a !important;
+    text-shadow: none !important;
+}
+
+/* Forms and labels */
+body.admin-page .admin-section label,
+body.admin-page .form-group label {
+    color: #243b4d !important;
+    text-shadow: none !important;
+}
+
+body.admin-page .admin-section input,
+body.admin-page .admin-section select,
+body.admin-page .admin-section textarea {
+    background: #ffffff !important;
+    color: #243447 !important;
+    border: 1px solid #cbd7e0 !important;
+    text-shadow: none !important;
+}
+
+body.admin-page .admin-section input::placeholder,
+body.admin-page .admin-section textarea::placeholder {
+    color: #718293 !important;
+    opacity: 1 !important;
+}
+
+body.admin-page .admin-section input:focus,
+body.admin-page .admin-section select:focus,
+body.admin-page .admin-section textarea:focus {
+    border-color: #07966f !important;
+    outline: 2px solid rgba(7, 150, 111, 0.15);
+    outline-offset: 1px;
+}
+
+/* Tables and report details */
+body.admin-page .admin-section table,
+body.admin-page .admin-section th,
+body.admin-page .admin-section td {
+    color: #243447 !important;
+    text-shadow: none !important;
+}
+
+body.admin-page .admin-section th {
+    background: #edf3f6 !important;
+    font-weight: 700;
+}
+
+body.admin-page .admin-section td {
+    border-color: #e3eaf0 !important;
+}
+
+/* Buttons: preserve their existing classes and actions */
+body.admin-page .admin-primary-action,
+body.admin-page button.admin-primary-action {
+    background: #078b69 !important;
+    color: #ffffff !important;
+    border: 1px solid #078b69 !important;
+    text-shadow: none !important;
+}
+
+body.admin-page .admin-secondary-action {
+    background: #edf3f6 !important;
+    color: #17344a !important;
+    border: 1px solid #d3dfe6 !important;
+    text-shadow: none !important;
+}
+
+body.admin-page button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+/* Organization directory */
+body.admin-page .organization-card h3,
+body.admin-page .organization-card-details,
+body.admin-page .organization-detail,
+body.admin-page .organization-detail strong {
+    text-shadow: none !important;
+}
+
+body.admin-page .organization-card h3,
+body.admin-page .organization-detail strong {
+    color: #17344a !important;
+}
+
+body.admin-page .organization-detail {
+    color: #526575 !important;
+}
+
+/* Loading, empty states and status messages */
+body.admin-page .admin-loading,
+body.admin-page .organization-empty,
+body.admin-page .feature-placeholder {
+    color: #526575 !important;
+    text-shadow: none !important;
+}
+
+body.admin-page .organization-message.success {
+    background: #e8f8f2 !important;
+    color: #087957 !important;
+}
+
+body.admin-page .organization-message.error {
+    background: #fff0f0 !important;
+    color: #b42318 !important;
+}
+
+/* Keep maps and their controls intact */
+body.admin-page .admin-map {
+    background: #eaf0f4;
+}
+
+/* Responsive readability */
+@media (max-width: 768px) {
+    body.admin-page .admin-main {
+        min-width: 0;
+    }
+
+    body.admin-page .admin-section {
+        color: #243447 !important;
+    }
+
+    body.admin-page .admin-page-heading {
+        gap: 12px;
+    }
+}
+</style>
 </body>
 </html>
